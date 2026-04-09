@@ -7,11 +7,12 @@ from PyQt5.QtCore import Qt
 class CuaSoChinh(QtWidgets.QMainWindow):
     def __init__(self, ten_nguoi_dung):
         super().__init__()
-        uic.loadUi('/Users/user/Desktop/project/mainchinh.ui', self)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        uic.loadUi(os.path.join(base_dir, "mainchinh.ui"), self)
         self.setWindowTitle(f"App Học Tiếng Nhật - こんにちは {ten_nguoi_dung}!")
 
         # Load QSS
-        qss_file_path = '/Users/user/Desktop/style.qss'
+        qss_file_path = os.path.join(base_dir, 'style.qss')
         if os.path.exists(qss_file_path):
             with open(qss_file_path, 'r', encoding='utf-8') as f:
                 self.setStyleSheet(f.read())
@@ -60,7 +61,8 @@ class CuaSoChinh(QtWidgets.QMainWindow):
         font_chu = QFont()
         font_chu.setPointSize(16)
 
-        file_path = '/Users/user/Desktop/data_katakana.txt'
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(base_dir, 'data_katakana.txt')
         if os.path.exists(file_path):
             with open(file_path, 'r', encoding='utf-8') as f:
                 for row_index, line in enumerate(f):

@@ -9,7 +9,8 @@ from main_window import CuaSoChinh
 class CuaSoDangNhap(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('/Users/user/Desktop/project/manhinhdangnhap.ui', self)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        uic.loadUi(os.path.join(base_dir, "manhinhdangnhap.ui"), self)
         self.lineEdit_pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.btn_chuyen_trang.clicked.connect(self.mo_cua_so_dang_ky)
         self.btn_dang_nhap.clicked.connect(self.xu_ly_dang_nhap)
@@ -17,7 +18,8 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
     def xu_ly_dang_nhap(self):
         chuoi_nhap_vao = self.lineEdit_user.text().strip()
         pass_nhap = self.lineEdit_pass.text().strip()
-        file_path = '/Users/user/Desktop/database.txt'
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(base_dir, "database.txt")
 
         if not os.path.exists(file_path):
             hop_thoai = QMessageBox.question(self, "Chưa có dữ liệu",

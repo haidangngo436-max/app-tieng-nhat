@@ -7,7 +7,8 @@ from PyQt5.QtCore import QUrl
 class CuaSoDangKy(QtWidgets.QMainWindow):
     def __init__(self, cua_so_dang_nhap_truoc_do):
         super().__init__()
-        uic.loadUi('dang ky tai khoan.ui', self)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        uic.loadUi(os.path.join(base_dir, "manhinhdangnhap.ui"), self)
         self.cua_so_dang_nhap = cua_so_dang_nhap_truoc_do
         self.lineEdit_pass_dk.setEchoMode(QtWidgets.QLineEdit.Password)
 
@@ -41,7 +42,8 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
             QMessageBox.warning(self, "Lỗi", "Đừng để trống thông tin nào nhé!")
             return
 
-        file_path = '/Users/user/Desktop/database.txt'
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(base_dir, "database.txt")
         if os.path.exists(file_path):
             with open(file_path, 'r', encoding='utf-8') as f:
                 for line in f:
@@ -65,4 +67,5 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
         self.close()
 
     def mo_file_dieu_khoan(self, link_text):
-        QDesktopServices.openUrl(QUrl.fromLocalFile('/Users/user/Desktop/12.txt'))
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        QDesktopServices.openUrl(QUrl.fromLocalFile(os.path.join(base_dir, "12.txt")))
