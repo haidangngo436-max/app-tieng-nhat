@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Quiz</class>
+ <widget class="QMainWindow" name="Quiz">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>759</width>
+    <height>698</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Quiz - 5 Bài (Duolingo Style)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string>
+QWidget{
+    font-family:Segoe UI;
+    font-size:14px;
+    background-color:#f6f7fb;
+}
+QFrame#frame_header{
+    background-color:white;
+    border-radius:18px;
+    border:2px solid #e5e5e5;
+}
+QLabel#label_title{
+    font-size:30px;
+    font-weight:900;
+    color:#58cc02;
+}
+QLabel#label_subtitle{
+    font-size:14px;
+    font-weight:600;
+    color:#636e72;
+}
+QFrame#frame_quiz{
+    background-color:white;
+    border-radius:18px;
+    border:2px solid #e5e5e5;
+}
+QLabel{
+    color:#2d3436;
+}
+QRadioButton{
+    background-color:#ffffff;
+    border:2px solid #e5e5e5;
+    border-radius:16px;
+    padding:14px;
+    font-size:16px;
+    font-weight:700;
+    color:#2d3436;
+}
+QRadioButton:hover{
+    border:2px solid #58cc02;
+    background-color:#f3ffe9;
+}
+QPushButton{
+    border:none;
+    border-radius:16px;
+    padding:14px 22px;
+    font-size:15px;
+    font-weight:900;
+}
+QPushButton#btn_next{
+    background-color:#58cc02;
+    color:white;
+}
+QPushButton#btn_next:hover{
+    background-color:#46a302;
+}
+QPushButton#btn_prev{
+    background-color:#dfe6e9;
+    color:#2d3436;
+}
+QPushButton#btn_prev:hover{
+    background-color:#b2bec3;
+}
+QPushButton#btn_bai1, QPushButton#btn_bai2, QPushButton#btn_bai3, QPushButton#btn_bai4, QPushButton#btn_bai5{
+    background-color:white;
+    border:2px solid #e5e5e5;
+    color:#2d3436;
+    font-size:14px;
+    font-weight:800;
+    padding:12px;
+}
+QPushButton#btn_bai1:hover, QPushButton#btn_bai2:hover, QPushButton#btn_bai3:hover, QPushButton#btn_bai4:hover, QPushButton#btn_bai5:hover{
+    border:2px solid #58cc02;
+    background-color:#f3ffe9;
+}
+    </string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_main">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_content">
+      <item>
+       <widget class="QFrame" name="frame_quiz">
+        <layout class="QVBoxLayout" name="verticalLayout_quiz">
+         <item>
+          <widget class="QStackedWidget" name="stackedWidget_main">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="page_bai2">
+            <layout class="QVBoxLayout" name="layout_bai2">
+             <item>
+              <widget class="QLabel" name="label_bai2_title">
+               <property name="styleSheet">
+                <string>font-size:22px; font-weight:900; color:#58cc02;</string>
+               </property>
+               <property name="text">
+                <string>BÀI 2</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QStackedWidget" name="stackedWidget_bai2">
+               <property name="currentIndex">
+                <number>7</number>
+               </property>
+               <widget class="QWidget" name="bai2_cau1">
+                <layout class="QVBoxLayout" name="layout_bai2_cau1">
+                 <item>
+                  <widget class="QLabel" name="bai2_progress1">
+                   <property name="text">
+                    <string>Câu 1/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="bai2_question1">
+                   <property name="text">
+                    <string>1. この漢字は（　　　）にくいです。</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_1_A">
+                   <property name="text">
+                    <string>A. 覚える</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_41">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_46">
+                    <item>
+                     <widget class="QLabel" name="label_76">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_1_B">
+                   <property name="text">
+                    <string>B. 覚え</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_42">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_47">
+                    <item>
+                     <widget class="QLabel" name="label_79">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_77">
+                      <property name="text">
+                       <string>Giải thích: 覚えます → 覚え + にくい.</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_78">
+                      <property name="text">
+                       <string>Dịch: Chữ Hán này khó nhớ.</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_1_C">
+                   <property name="text">
+                    <string>C. 覚えて</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_43">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_48">
+                    <item>
+                     <widget class="QLabel" name="label_80">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_1_D">
+                   <property name="text">
+                    <string>D. 覚えた</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_44">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_49">
+                    <item>
+                     <widget class="QLabel" name="label_81">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="bai2_cau2">
+                <layout class="QVBoxLayout" name="layout_bai2_cau2">
+                 <item>
+                  <widget class="QLabel" name="bai2_progress2">
+                   <property name="text">
+                    <string>Câu 2/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="bai2_question2">
+                   <property name="text">
+                    <string>2. このイスは軽くて（　　　）やすいです。</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_2_A">
+                   <property name="text">
+                    <string>A. 運び</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_45">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_50">
+                    <item>
+                     <widget class="QLabel" name="label_83">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_84">
+                      <property name="text">
+                       <string>Giải thích: 運びます → 運び + やすい.</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_82">
+                      <property name="text">
+                       <string>Dịch: Cái ghế này nhẹ nên dễ mang đi.</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_2_B">
+                   <property name="text">
+                    <string>B. 運ぶ</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_46">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_51">
+                    <item>
+                     <widget class="QLabel" name="label_85">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_2_C">
+                   <property name="text">
+                    <string>C. 運んだ</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_47">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_52">
+                    <item>
+                     <widget class="QLabel" name="label_86">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="bai2_2_D">
+                   <property name="text">
+                    <string>D. 運んで</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_48">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_53">
+                    <item>
+                     <widget class="QLabel" name="label_87">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_9">
+                <layout class="QVBoxLayout" name="verticalLayout_54">
+                 <item>
+                  <widget class="QLabel" name="label_88">
+                   <property name="text">
+                    <string>Câu 3/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_89">
+                   <property name="styleSheet">
+                    <string notr="true">font-size: 26px;</string>
+                   </property>
+                   <property name="text">
+                    <string>3. この肉はかたくて（　　　）にくいです。</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_33">
+                   <property name="text">
+                    <string>A. 食べ</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_49">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_55">
+                    <item>
+                     <widget class="QLabel" name="label_106">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_105">
+                      <property name="text">
+                       <string>Giải thích: 食べます → 食べ + にくい.</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_104">
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>-1</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">text-font : 20px;</string>
+                      </property>
+                      <property name="text">
+                       <string>Dịch: Thịt này cứng nên khó ăn.</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_34">
+                   <property name="text">
+                    <string>B. 食べる</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_50">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_56">
+                    <item>
+                     <widget class="QLabel" name="label_107">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_35">
+                   <property name="text">
+                    <string>C. 食べて</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_51">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_57">
+                    <item>
+                     <widget class="QLabel" name="label_108">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_36">
+                   <property name="text">
+                    <string>D. 食べた</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_52">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_58">
+                    <item>
+                     <widget class="QLabel" name="label_109">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_10">
+                <layout class="QVBoxLayout" name="verticalLayout_59">
+                 <item>
+                  <widget class="QLabel" name="label_90">
+                   <property name="text">
+                    <string>Câu 4/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_91">
+                   <property name="text">
+                    <string>4. この道は車が多くて危ないので、夜は（　　　）にくいです。</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_37">
+                   <property name="text">
+                    <string>A. 歩いて</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_53">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_60">
+                    <item>
+                     <widget class="QLabel" name="label_115">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_38">
+                   <property name="text">
+                    <string>B. 歩く</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_54">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_61">
+                    <item>
+                     <widget class="QLabel" name="label_114">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_39">
+                   <property name="text">
+                    <string>C. 歩いた</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_55">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_62">
+                    <item>
+                     <widget class="QLabel" name="label_113">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_40">
+                   <property name="text">
+                    <string>D. 歩き</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_56">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_63">
+                    <item>
+                     <widget class="QLabel" name="label_111">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_110">
+                      <property name="text">
+                       <string>Giải thích: 歩きます → 歩き + にくい</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_112">
+                      <property name="text">
+                       <string>Dịch: Con đường này nhiều xe và nguy hiểm nên ban đêm khó đi bộ.</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_11">
+                <layout class="QVBoxLayout" name="verticalLayout_64">
+                 <item>
+                  <widget class="QLabel" name="label_92">
+                   <property name="text">
+                    <string>Câu 5/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_93">
+                   <property name="text">
+                    <string>5. このシャツはサイズが小さすぎて、（　　　）にくいです。</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_41">
+                   <property name="text">
+                    <string>A. 着る</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_57">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_65">
+                    <item>
+                     <widget class="QLabel" name="label_116">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_42">
+                   <property name="text">
+                    <string>B. 着て</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_58">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_66">
+                    <item>
+                     <widget class="QLabel" name="label_117">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_43">
+                   <property name="text">
+                    <string>C. 着</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_59">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_67">
+                    <item>
+                     <widget class="QLabel" name="label_120">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_119">
+                      <property name="text">
+                       <string>Giải thích: 着ます → 着 + にくい</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_118">
+                      <property name="text">
+                       <string>Dịch: Cái áo này size nhỏ quá nên khó mặ</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_44">
+                   <property name="text">
+                    <string>D. 着た</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_60">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_68">
+                    <item>
+                     <widget class="QLabel" name="label_121">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_12">
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <item>
+                  <widget class="QLabel" name="label_94">
+                   <property name="text">
+                    <string>Câu 6/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_95">
+                   <property name="text">
+                    <string>6. このゲームはルールが簡単だから、子どもでも（　　　）やすいです。</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_45">
+                   <property name="text">
+                    <string>A. 遊ぶ</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_3">
+                    <item>
+                     <widget class="QLabel" name="label_4">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_46">
+                   <property name="text">
+                    <string>B. 遊び</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_2">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_2">
+                    <item>
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>Giải thích: 遊びます → 遊び + やすい</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>Dịch: Trò chơi này luật đơn giản nên trẻ con cũng dễ chơi.</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_47">
+                   <property name="text">
+                    <string>C. 遊んで</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_3">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <item>
+                     <widget class="QLabel" name="label_2">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_48">
+                   <property name="text">
+                    <string>D. 遊んだ</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_4">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_5">
+                    <item>
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_13">
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="label_96">
+                   <property name="text">
+                    <string>Câu 7/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_97">
+                   <property name="text">
+                    <string>7. この机は高すぎて（　　　）にくいです。</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_49">
+                   <property name="text">
+                    <string>A. 勉強</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_5">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_10">
+                    <item>
+                     <widget class="QLabel" name="label_11">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_50">
+                   <property name="text">
+                    <string>B. 勉強する</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_6">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_9">
+                    <item>
+                     <widget class="QLabel" name="label_10">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_51">
+                   <property name="text">
+                    <string>C. 勉強し</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_7">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_8">
+                    <item>
+                     <widget class="QLabel" name="label_9">
+                      <property name="text">
+                       <string>Correct answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_8">
+                      <property name="text">
+                       <string>Giải thích: 勉強します → bỏ ます → 勉強し + にくい.</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_7">
+                      <property name="text">
+                       <string>Dịch: Cái bàn này cao quá nên khó học.</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_52">
+                   <property name="text">
+                    <string>D. 勉強した</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_8">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_7">
+                    <item>
+                     <widget class="QLabel" name="label_12">
+                      <property name="text">
+                       <string>Wrong answer</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_14">
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item>
+                  <widget class="QLabel" name="label_98">
+                   <property name="text">
+                    <string>Câu 8/10</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_99">
+                   <property name="text">
+                    <string>8. このアプリは便利で（　　　）やすいです。</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_53">
+                   <property name="text">
+                    <string>A. 使う</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_9">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_12">
+                    <item>
+                     <widget class="QLabel" name="label_13">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_54">
+                   <property name="text">
+                    <string>B. 使い</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_10">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item>
+                     <widget class="QLabel" name="label_17">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_16">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_18">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_55">
+                   <property name="text">
+                    <string>C. 使って</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_11">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_14">
+                    <item>
+                     <widget class="QLabel" name="label_15">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_56">
+                   <property name="text">
+                    <string>D. 使った</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_12">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <item>
+                     <widget class="QLabel" name="label_14">
+                      <property name="text">
+                       <string>TextLabel</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_15">
+                <widget class="QLabel" name="label_100">
+                 <property name="geometry">
+                  <rect>
+                   <x>250</x>
+                   <y>150</y>
+                   <width>55</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_101">
+                 <property name="geometry">
+                  <rect>
+                   <x>250</x>
+                   <y>200</y>
+                   <width>55</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_57">
+                 <property name="geometry">
+                  <rect>
+                   <x>220</x>
+                   <y>250</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_58">
+                 <property name="geometry">
+                  <rect>
+                   <x>220</x>
+                   <y>300</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_59">
+                 <property name="geometry">
+                  <rect>
+                   <x>230</x>
+                   <y>350</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_60">
+                 <property name="geometry">
+                  <rect>
+                   <x>230</x>
+                   <y>410</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+               </widget>
+               <widget class="QWidget" name="page_16">
+                <widget class="QRadioButton" name="radioButton_61">
+                 <property name="geometry">
+                  <rect>
+                   <x>110</x>
+                   <y>210</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_62">
+                 <property name="geometry">
+                  <rect>
+                   <x>90</x>
+                   <y>250</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_63">
+                 <property name="geometry">
+                  <rect>
+                   <x>110</x>
+                   <y>290</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QRadioButton" name="radioButton_64">
+                 <property name="geometry">
+                  <rect>
+                   <x>120</x>
+                   <y>340</y>
+                   <width>95</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>RadioButton</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_102">
+                 <property name="geometry">
+                  <rect>
+                   <x>150</x>
+                   <y>110</y>
+                   <width>55</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_103">
+                 <property name="geometry">
+                  <rect>
+                   <x>130</x>
+                   <y>160</y>
+                   <width>55</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="layout_btn_bai1_1">
+           <item>
+            <widget class="QPushButton" name="btn_prev">
+             <property name="styleSheet">
+              <string notr="true"> background-color: #1899d6;</string>
+             </property>
+             <property name="text">
+              <string>⬅ Trước</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_next">
+             <property name="text">
+              <string>Tiếp ➡</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
