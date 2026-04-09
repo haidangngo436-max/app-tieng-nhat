@@ -11,5 +11,5 @@ if __name__ == "__main__":
 
     main_window = CuaSoDangNhap()
     main_window.show()
-#dangbeo
+
     sys.exit(app.exec())
