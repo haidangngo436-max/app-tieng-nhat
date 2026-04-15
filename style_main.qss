@@ -1,99 +1,111 @@
 /* ================================================= */
-/* 1. NỀN TỔNG THỂ & KHUNG CHÍNH                     */
+/* 1. THIẾT KẾ CÁC NÚT BẤM (PHONG CÁCH DUOLINGO)     */
 /* ================================================= */
-QMainWindow {
-    background-color: #F7F9FA;
-}
 
-/* Khung trắng chứa nội dung bài học */
-#pages {
-    background-color: #FFFFFF;
-    border: 2px solid #E5E7EB;
-    border-radius: 20px;
-    margin: 10px;
-}
-
-/* Tinh chỉnh ô hiển thị văn bản ngữ pháp */
-QTextEdit {
-    border: none;
-    background-color: transparent;
-    font-size: 15px;
-    color: #3C3C3C;
-    line-height: 1.5;
-}
-
-/* ================================================= */
-/* 2. BANNER TOP (XANH DƯƠNG CHỦ ĐẠO)                */
-/* ================================================= */
-#banner_top {
+/* Định dạng chung cho tất cả các nút */
+QPushButton {
     background-color: #1CB0F6;
     color: white;
-    border-radius: 15px;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px;
-}
-
-/* ================================================= */
-/* 3. MENU BÀI HỌC BÊN TRÁI (3D TRẮNG - XANH)        */
-/* ================================================= */
-#frame QPushButton {
-    background-color: #FFFFFF;
-    color: #4B5563;
-    font-weight: bold;
-    border: 2px solid #E5E7EB;
-    border-bottom: 4px solid #E5E7EB; /* Tạo khối 3D */
-    border-radius: 12px;
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
     margin-bottom: 5px;
 }
 
-#frame QPushButton:hover {
-    background-color: #F0F9FF;
-    color: #1CB0F6;
-    border-color: #1CB0F6;
-    border-bottom-color: #1CB0F6;
-}
-
-#frame QPushButton:pressed {
-    border-bottom: 0px;
-    margin-top: 4px; /* Hiệu ứng lún xuống */
-}
-
-/* ================================================= */
-/* 4. CÁC NÚT ĐIỀU HƯỚNG DƯỚI CÙNG (FOOTER)          */
-/* ================================================= */
-
-/* Nút Bài Tiếp (Xanh dương đặc) */
-#btn_tiep {
-    background-color: #1CB0F6;
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
     color: white;
-    border-radius: 12px;
-    padding: 8px 25px;
-    font-weight: bold;
-    border-bottom: 4px solid #1899D6;
 }
-#btn_tiep:hover { background-color: #14C6FF; }
 
-/* Nút Bài Trước (Trắng viền xanh) */
+/* Ngoại lệ: Nút Bài Trước (Trắng viền Xanh) */
 #btn_truoc {
     background-color: #FFFFFF;
     color: #1CB0F6;
-    border: 2px solid #1CB0F6;
-    border-bottom: 4px solid #1CB0F6;
-    border-radius: 12px;
-    padding: 8px 25px;
-    font-weight: bold;
+    border: 2px solid #E5E7EB;
+    border-bottom: 5px solid #E5E7EB;
 }
-#btn_truoc:hover { background-color: #F0F9FF; }
+#btn_truoc:hover {
+    background-color: #F7F9FA;
+    border-color: #1CB0F6;
+    border-bottom: 5px solid #1899D6;
+}
 
-/* Nút Đăng xuất (Trắng viền xám - tinh tế) */
+/* Ngoại lệ: Nút Đăng Xuất (Trắng viền Vàng/Đỏ) */
 #btn_dang_xuat {
     background-color: #FFFFFF;
-    color: #AFAFAF;
-    border: 2px solid #E5E7EB;
-    border-bottom: 4px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 8px 15px;
+    color: #FF5252;
+    border: 2px solid #FFEAA7;
+    border-bottom: 5px solid #FFD32A;
 }
-#btn_dang_xuat:hover { color: #FF4B4B; border-color: #FF4B4B; border-bottom-color: #FF4B4B; }
+
+/* ================================================= */
+/* 2. KHUNG NỘI DUNG BÀI HỌC (QTextEdit)             */
+/* ================================================= */
+
+QTextEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #E5E7EB;
+    border-radius: 25px; /* Bo góc cực mạnh cho sang */
+    padding: 25px;       /* Khoảng cách rộng rãi cho chữ "dễ thở" */
+    font-size: 16px;
+    color: #3C3C3C;
+    selection-background-color: #1CB0F6; /* Màu khi bôi đen chữ */
+}
+
+/* Thanh cuộn (ScrollBar) mỏng nhẹ, hiện đại */
+QTextEdit QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 6px;
+}
+QTextEdit QScrollBar::handle:vertical {
+    background: #D1D5DB;
+    border-radius: 3px;
+}
+QTextEdit QScrollBar::handle:vertical:hover {
+    background: #1CB0F6;
+}
+
+/* ================================================= */
+/* 3. ĐỊNH DẠNG HTML BÊN TRONG (ĂN THEO PYTHON)      */
+/* ================================================= */
+
+/* Tiêu đề bài học lớn */
+h2 {
+    color: #1CB0F6;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+/* Các mục tiêu đề nhỏ hơn */
+h3 {
+    color: #58CC02;
+    font-weight: bold;
+}
+
+/* Nhấn mạnh từ vựng quan trọng (Thẻ b) */
+b {
+    color: #1CB0F6;
+}
+
+/* Cấu trúc ngữ pháp (Thẻ i) */
+i {
+    color: #58CC02;
+    font-style: normal; /* Biến thẻ nghiêng thành chữ đứng màu xanh */
+    font-weight: bold;
+}
+
+/* Các đoạn code hoặc cấu trúc đóng khung */
+code {
+    background-color: #F3F4F6;
+    color: #E63946;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+}

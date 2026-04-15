@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
-    <height>863</height>
+    <width>1440</width>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,497 +15,159 @@
   </property>
   <property name="styleSheet">
    <string notr="true">/* ================================================= */
-/* 1. NỀN TỔNG THỂ &amp; KHUNG CHÍNH                     */
+/* 1. THIẾT KẾ TỔNG THỂ CHO TẤT CẢ NÚT BẤM           */
 /* ================================================= */
-QMainWindow {
-    background-color: #F7F9FA;
-}
 
-/* Khung trắng chứa nội dung bài học */
-#pages {
-    background-color: #FFFFFF;
-    border: 2px solid #E5E7EB;
-    border-radius: 20px;
-    margin: 10px;
-}
-
-/* Tinh chỉnh ô hiển thị văn bản ngữ pháp */
-QTextEdit {
-    border: none;
-    background-color: transparent;
-    font-size: 15px;
-    color: #3C3C3C;
-    line-height: 1.5;
-}
-
-/* ================================================= */
-/* 2. BANNER TOP (XANH DƯƠNG CHỦ ĐẠO)                */
-/* ================================================= */
-#banner_top {
-    background-color: #1CB0F6;
+QPushButton {
+    /* Ép hiển thị màu xanh dương Duolingo làm nền */
+    background-color: #1CB0F6; 
     color: white;
-    border-radius: 15px;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px;
-}
-
-/* ================================================= */
-/* 3. MENU BÀI HỌC BÊN TRÁI (3D TRẮNG - XANH)        */
-/* ================================================= */
-#frame QPushButton {
-    background-color: #FFFFFF;
-    color: #4B5563;
-    font-weight: bold;
-    border: 2px solid #E5E7EB;
-    border-bottom: 4px solid #E5E7EB; /* Tạo khối 3D */
-    border-radius: 12px;
+    font-weight: 900;
+    font-size: 15px;
+    
+    /* Bo góc mập mạp 18px */
+    border-radius: 18px; 
+    
+    /* Khai báo viền rõ ràng để Mac không tự chèn màu xám */
+    border: 1px solid #1CB0F6;
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    
     padding: 10px;
     margin-bottom: 5px;
 }
 
-#frame QPushButton:hover {
-    background-color: #F0F9FF;
-    color: #1CB0F6;
-    border-color: #1CB0F6;
-    border-bottom-color: #1CB0F6;
-}
-
-#frame QPushButton:pressed {
-    border-bottom: 0px;
-    margin-top: 4px; /* Hiệu ứng lún xuống */
-}
-
 /* ================================================= */
-/* 4. CÁC NÚT ĐIỀU HƯỚNG DƯỚI CÙNG (FOOTER)          */
+/* 2. HIỆU ỨNG KHI RÊ CHUỘT (HOVER) &amp; KHI ẤN (PRESSED) */
 /* ================================================= */
 
-/* Nút Bài Tiếp (Xanh dương đặc) */
-#btn_tiep {
-    background-color: #1CB0F6;
+QPushButton:hover, QPushButton:pressed {
+    /* Biến toàn bộ nút thành màu xanh lá cây */
+    background-color: #58CC02; 
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
     color: white;
-    border-radius: 12px;
-    padding: 8px 25px;
-    font-weight: bold;
-    border-bottom: 4px solid #1899D6;
 }
-#btn_tiep:hover { background-color: #14C6FF; }
 
-/* Nút Bài Trước (Trắng viền xanh) */
+/* ================================================= */
+/* 3. CÁC NGOẠI LỆ (NẾU CÓ)                           */
+/* ================================================= */
+
+/* Nút Bài Trước: Giữ nền trắng để phân biệt, nhưng vẫn bo góc mập */
 #btn_truoc {
     background-color: #FFFFFF;
     color: #1CB0F6;
-    border: 2px solid #1CB0F6;
-    border-bottom: 4px solid #1CB0F6;
-    border-radius: 12px;
-    padding: 8px 25px;
-    font-weight: bold;
+    border: 2px solid #E5E7EB;
+    border-bottom: 5px solid #E5E7EB;
 }
-#btn_truoc:hover { background-color: #F0F9FF; }
 
-/* Nút Đăng xuất (Trắng viền xám - tinh tế) */
+#btn_truoc:hover {
+    background-color: #F7F9FA;
+    border-color: #1CB0F6;
+    border-bottom: 5px solid #1899D6;
+}
+
+/* Nút Đăng Xuất: Trắng viền đỏ */
 #btn_dang_xuat {
     background-color: #FFFFFF;
-    color: #AFAFAF;
-    border: 2px solid #E5E7EB;
-    border-bottom: 4px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 8px 15px;
-}
-#btn_dang_xuat:hover { color: #FF4B4B; border-color: #FF4B4B; border-bottom-color: #FF4B4B; }</string>
+    color: #FF5252;
+    border: 2px solid #FFEAA7;
+    border-bottom: 5px solid #FFD32A;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <layout class="QHBoxLayout" name="bodyHorizontalLayout">
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout_10">
       <item>
-       <widget class="QFrame" name="frame">
+       <widget class="QLabel" name="label">
         <property name="minimumSize">
          <size>
-          <width>180</width>
-          <height>0</height>
+          <width>0</width>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>200</width>
-          <height>16777215</height>
+          <width>16777215</width>
+          <height>60</height>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background:#ecf0f1;</string>
+         <string>font-size:20px;font-weight:bold;background:#2c3e50;color:white;</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QPushButton" name="btn_hira">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bảng chữ cái</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai1">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 1</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="menuSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>7</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai2">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 2</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>6</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai3">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 3</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>6</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai4">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 4</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>7</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai5">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 5</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>6</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai6">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 6</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>7</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai7">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 7</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>6</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai8">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>6</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai9">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 9</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_8">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Preferred</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>158</width>
-             <height>7</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_bai10">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Bài 10</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <property name="text">
+         <string>📘 HỌC NGỮ PHÁP TIẾNG NHẬT</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QPushButton" name="btn_history">
+          <property name="text">
+           <string>Lịch sử làm bài</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_bg">
+          <property name="text">
+           <string>Bài Giảng</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_quizz">
+          <property name="text">
+           <string>Quizz</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_dang_xuat">
+          <property name="text">
+           <string>Đăng xuất</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    </item>
+    <item row="3" column="1">
+     <layout class="QHBoxLayout" name="bodyHorizontalLayout">
       <item>
        <widget class="QStackedWidget" name="pages">
         <property name="styleSheet">
@@ -4387,13 +4049,6 @@ p, li { white-space: pre-wrap; }
         </widget>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_2"/>
-    </item>
-    <item row="1" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_10">
       <item>
        <widget class="QLabel" name="label">
         <property name="minimumSize">
@@ -4423,13 +4078,6 @@ p, li { white-space: pre-wrap; }
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QPushButton" name="btn_history">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
           <property name="text">
            <string>Lịch sử làm bài</string>
           </property>
@@ -4437,13 +4085,6 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QPushButton" name="btn_bg">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
           <property name="text">
            <string>Bài Giảng</string>
           </property>
@@ -4451,15 +4092,8 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QPushButton" name="btn_quizz">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
           <property name="text">
-           <string>Quiz</string>
+           <string>Quizz</string>
           </property>
          </widget>
         </item>
@@ -4491,13 +4125,6 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QPushButton" name="btn_dang_xuat">
-          <property name="font">
-           <font>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
           <property name="text">
            <string>Đăng xuất</string>
           </property>
@@ -4507,7 +4134,7 @@ p, li { white-space: pre-wrap; }
       </item>
      </layout>
     </item>
-    <item row="3" column="0">
+    <item row="4" column="1">
      <layout class="QHBoxLayout" name="footerLayout">
       <item>
        <spacer name="leftSpacer">
@@ -4517,7 +4144,7 @@ p, li { white-space: pre-wrap; }
         <property name="sizeHint" stdset="0">
          <size>
           <width>200</width>
-          <height>20</height>
+          <height>80</height>
          </size>
         </property>
        </spacer>
@@ -4532,8 +4159,8 @@ p, li { white-space: pre-wrap; }
         </property>
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
+          <pointsize>-1</pointsize>
+          <weight>99</weight>
           <bold>true</bold>
          </font>
         </property>
@@ -4565,8 +4192,8 @@ QPushButton:hover {
         </property>
         <property name="font">
          <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
+          <pointsize>-1</pointsize>
+          <weight>99</weight>
           <bold>true</bold>
          </font>
         </property>
