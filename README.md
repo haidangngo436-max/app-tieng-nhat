@@ -53,7 +53,6 @@ app-tieng-nhat/
 - ✅ Làm bài tập/quiz
 - ✅ Theo dõi tiến độ học tập
 - ✅ Xem lịch sử làm bài
-- ✅ Vô hiệu hóa chỉnh sửa trực tiếp trên bảng
 
 ## Lưu Ý
 
