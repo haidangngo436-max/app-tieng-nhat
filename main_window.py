@@ -1,94 +1,157 @@
 import os
 import json
+import random
 from PyQt5 import QtWidgets, uic, sip
-from PyQt5.QtWidgets import QTableWidgetItem
-from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
-from quizzcode import QuizApp  # Import class Quiz từ file quizzcode.py
+from quizzcode import QuizApp
 
 
 class CuaSoChinh(QtWidgets.QMainWindow):
     def __init__(self, ten_nguoi_dung):
         super().__init__()
+        # 1. Lưu thông tin User
+        self.ten_nguoi_dung = ten_nguoi_dung
         base_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # 2. Load giao diện
         uic.loadUi(os.path.join(base_dir, "mainchinh.ui"), self)
 
-        # Biến quản lý cửa sổ Quiz để tránh mở chồng chéo hoặc lỗi bộ nhớ
         self.cua_so_quiz = None
-
-        self.setWindowTitle(f"App Học Tiếng Nhật - こんにちは {ten_nguoi_dung}!")
+        self.setWindowTitle(f"Học Tiếng Nhật - {self.ten_nguoi_dung}")
         self.showMaximized()
 
-        # 1. ĐỌC DỮ LIỆU TỪ FILE JSON
+        # 3. Đọc dữ liệu Quizz từ JSON chung
         json_path = os.path.join(base_dir, "data_quizz.json")
         try:
             with open(json_path, 'r', encoding='utf-8') as f:
                 self.kho_du_lieu_quizz = json.load(f)
-        except Exception as e:
-            print("Lỗi khi đọc file JSON:", e)
+        except:
             self.kho_du_lieu_quizz = {}
 
-        # 2. KẾT NỐI NÚT QUIZZ DÙNG CHUNG (Dựa trên ảnh của bạn là btn_quizz)
+        # 4. Kết nối các nút chức năng cố định
+        if hasattr(self, 'btn_hira'):
+            self.btn_hira.clicked.connect(lambda: self.pages.setCurrentIndex(0))
+
         if hasattr(self, 'btn_quizz'):
             self.btn_quizz.clicked.connect(self.mo_quizz_theo_trang)
 
-        # 3. KẾT NỐI 10 NÚT DANH SÁCH BÊN TRÁI (Chỉ để lật trang lý thuyết)
-        for i in range(1, 11):
-            nut_ten = f"btn_bai{i}"
-            if hasattr(self, nut_ten):
-                nut_bam = getattr(self, nut_ten)
-                # Khi bấm nút bài: chỉ lật trang trong QStackedWidget (tên là 'pages')
-                nut_bam.clicked.connect(lambda checked, idx=i: self.pages.setCurrentIndex(idx))
-
-        # 4. LOAD STYLE QSS
-        qss_file_path = os.path.join(base_dir, 'style_main.qss')
-        if os.path.exists(qss_file_path):
-            with open(qss_file_path, 'r', encoding='utf-8') as f:
-                self.setStyleSheet(f.read())
-
-        # 5. CÁC NÚT ĐIỀU HƯỚNG DƯỚI CÙNG
         self.btn_truoc.clicked.connect(self.mo_bai_truoc)
         self.btn_tiep.clicked.connect(self.mo_bai_tiep)
         self.btn_dang_xuat.clicked.connect(self.dang_xuat)
 
-        self.load_bang_katakana_co_ban()
+        # 5. Kết nối 10 nút bài học bên trái (Lật trang)
+        for i in range(1, 11):
+            nut_ten = f"btn_bai{i}"
+            if hasattr(self, nut_ten):
+                nut_bam = getattr(self, nut_ten)
+                # Dùng lambda đúng cách để không bị kẹt ở bài cuối cùng
+                nut_bam.clicked.connect(lambda checked, idx=i: self.pages.setCurrentIndex(idx))
+
+        # 6. QUAN TRỌNG: Cập nhật màu sắc và khóa/mở bài ngay khi vào App
+        self.cap_nhat_giao_dien_khoa()
+
+    def get_progress_file(self):
+        """Đường dẫn file tiến độ riêng của từng User"""
+        return f"progress_{self.ten_nguoi_dung}.json"
+
+    def get_unlocked_list(self):
+        """Đọc danh sách bài đã mở từ file cá nhân"""
+        file_path = self.get_progress_file()
+        try:
+            if os.path.exists(file_path):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    return data.get("unlocked_lessons", [1])
+            return [1]  # Mặc định chỉ mở bài 1
+        except:
+            return [1]
+
+    def cap_nhat_giao_dien_khoa(self):
+        """Hàm 'phù thủy' đổi màu nút xám -> xanh ngay lập tức"""
+        unlocked_list = self.get_unlocked_list()
+
+        for i in range(1, 11):
+            nut_ten = f"btn_bai{i}"
+            if hasattr(self, nut_ten):
+                nut_bam = getattr(self, nut_ten)
+
+                if i in unlocked_list:
+                    # NẾU ĐÃ MỞ: Cho phép bấm + Đổi sang màu xanh (xóa style xám)
+                    nut_bam.setEnabled(True)
+                    nut_bam.setText(f"Bài {i} 🔓")
+                    nut_bam.setStyleSheet("")  # Xóa CSS cũ để lấy lại màu gốc trong QSS/Designer
+                else:
+                    # NẾU CHƯA MỞ: Khóa bấm + Nhuộm màu xám xịt
+                    nut_bam.setEnabled(False)
+                    nut_bam.setText(f"Bài {i} 🔒")
+                    nut_bam.setStyleSheet("""
+                        QPushButton {
+                            background-color: #d1d1d1; 
+                            color: #7f8c8d; 
+                            border: 2px solid #bdc3c7;
+                            border-radius: 20px;
+                        }
+                    """)
+
+        if hasattr(self, 'btn_hira'):
+            self.btn_hira.setEnabled(True)
+            self.btn_hira.setStyleSheet("")
 
     def mo_quizz_theo_trang(self):
-        """Tự động lấy index trang hiện tại để mở đúng bài trắc nghiệm"""
-        # Đóng cửa sổ cũ an toàn (nếu đang mở) bằng thư viện sip
-        if self.cua_so_quiz is not None and not sip.isdeleted(self.cua_so_quiz):
+        """Mở Quiz và đặt chế độ 'Theo dõi' khi đóng cửa sổ"""
+        if self.cua_so_quiz and not sip.isdeleted(self.cua_so_quiz):
             self.cua_so_quiz.close()
-            self.cua_so_quiz = None
 
-        # Lấy chỉ số trang hiện tại (Ví dụ: Bài 1 đang ở index 1)
         index_hien_tai = self.pages.currentIndex()
+        if index_hien_tai == 0: return  # Bảng chữ cái ko có quiz
 
-        # Tạo khóa tìm kiếm trong JSON (Ví dụ: "bai_1")
         ten_key = f"bai_{index_hien_tai}"
-        du_lieu_bai_tap = self.kho_du_lieu_quizz.get(ten_key, [])
+        du_lieu = self.kho_du_lieu_quizz.get(ten_key, [])
 
-        if du_lieu_bai_tap:
-            self.cua_so_quiz = QuizApp(du_lieu_bai_tap)
+        if du_lieu:
+            du_lieu_tron = list(du_lieu)
+            random.shuffle(du_lieu_tron)
+
+            # Khởi tạo QuizApp
+            self.cua_so_quiz = QuizApp(du_lieu_tron, index_hien_tai, self.ten_nguoi_dung)
+
+            # --- LOGIC THẦN THÁNH CHỮA BỆNH 'PHẢI ĐĂNG XUẤT MỚI XANH' ---
+            # 1. Ép cửa sổ Quiz tự hủy khi đóng để phát tín hiệu destroyed
+            self.cua_so_quiz.setAttribute(Qt.WA_DeleteOnClose)
+            # 2. Khi Quiz đóng, cửa sổ chính tự động 'vẽ' lại màu nút ngay lập tức
+            self.cua_so_quiz.destroyed.connect(self.cap_nhat_giao_dien_khoa)
+
             self.cua_so_quiz.show()
         else:
-            QtWidgets.QMessageBox.information(self, "Thông báo", f"Hiện chưa có bài tập cho nội dung này ({ten_key})")
+            QtWidgets.QMessageBox.information(self, "Thông báo", f"Chưa có bài tập cho '{ten_key}'")
+
+    def mo_bai_tiep(self):
+        """Nút lật trang có kiểm tra 'giấy thông hành'"""
+        target_idx = self.pages.currentIndex() + 1
+        if target_idx >= self.pages.count(): return
+
+        unlocked = self.get_unlocked_list()
+        # Cho qua nếu là bài đã mở khóa hoặc trang bảng chữ cái (index 0)
+        if target_idx == 0 or target_idx in unlocked:
+            self.pages.setCurrentIndex(target_idx)
+        else:
+            QtWidgets.QMessageBox.warning(self, "Bị khóa", "Học xong bài hiện tại mới được sang bài tiếp!")
 
     def mo_bai_truoc(self):
         if self.pages.currentIndex() > 0:
             self.pages.setCurrentIndex(self.pages.currentIndex() - 1)
 
-    def mo_bai_tiep(self):
-        if self.pages.currentIndex() < self.pages.count() - 1:
-            self.pages.setCurrentIndex(self.pages.currentIndex() + 1)
-
     def dang_xuat(self):
+        """Đăng xuất an toàn về màn hình Login"""
         if self.cua_so_quiz and not sip.isdeleted(self.cua_so_quiz):
             self.cua_so_quiz.close()
-        self.close()
-        from login_window import CuaSoDangNhap
-        self.man_hinh_dang_nhap = CuaSoDangNhap()
-        self.man_hinh_dang_nhap.show()
 
-    def load_bang_katakana_co_ban(self):
-        # Giữ nguyên code load bảng Katakana của bạn...
-        pass
+        # Import tại chỗ để tránh lỗi import vòng quanh
+        try:
+            from login_window import CuaSoDangNhap
+            self.man_hinh_dn = CuaSoDangNhap()
+            self.man_hinh_dn.show()
+            self.close()  # Đóng cửa sổ chính sau khi đã hiện màn hình login
+        except Exception as e:
+            print(f"Lỗi đăng xuất: {e}")
+            self.close()
