@@ -1,6 +1,7 @@
 import os
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QPixmap
 
 # NHÚNG 2 MÀN HÌNH KIA VÀO ĐÂY
 from register_window import CuaSoDangKy
@@ -11,17 +12,38 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        uic.loadUi(os.path.join(base_dir, "manhinhdangnhap.ui"), self)
+        uic.loadUi(os.path.join(base_dir, "../ui/manhinhdangnhap.ui"), self)
+        
+        # Tải hình ảnh từ đường dẫn tưyệt đối
+        self.tai_hinh_anh()
+        
         self.lineEdit_pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.btn_chuyen_trang.clicked.connect(self.mo_cua_so_dang_ky)
         self.btn_dang_nhap.clicked.connect(self.xu_ly_dang_nhap)
+
+    def tai_hinh_anh(self):
+        """Tại hình ảnh đăng nhập từ đường dẫn tưyệt đố"""
+        try:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            image_path = os.path.join(base_dir, "../assets/picture/concu.jpg")
+            if os.path.exists(image_path):
+                pixmap = QPixmap(image_path)
+                for widget in self.findChildren(QtWidgets.QLabel):
+                    # Kiểm tra xem label này có pixmap không
+                    if widget.pixmap() and not widget.pixmap().isNull():
+                        if pixmap and not pixmap.isNull():
+                            widget.setPixmap(pixmap)
+                            widget.setScaledContents(True)
+                        break
+        except Exception as e:
+            print(f"Lỗi tải hình ảnh: {e}")
 
 
     def xu_ly_dang_nhap(self):
         chuoi_nhap_vao = self.lineEdit_user.text().strip()
         pass_nhap = self.lineEdit_pass.text().strip()
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(base_dir, "database.txt")
+        file_path = os.path.join(base_dir, "../data/database.txt")
 
         if not os.path.exists(file_path):
             hop_thoai = QMessageBox.question(self, "Chưa có dữ liệu",

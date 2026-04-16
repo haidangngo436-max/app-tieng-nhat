@@ -1,7 +1,7 @@
 import os
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtGui import QDesktopServices
+from PyQt5.QtGui import QDesktopServices, QPixmap
 from PyQt5.QtCore import QUrl
 
 class CuaSoDangKy(QtWidgets.QMainWindow):
@@ -10,7 +10,10 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         # ✅ CHUẨN XỊN PHẢI LÀ NHƯ NÀY:
 
-        uic.loadUi(os.path.join(base_dir, "dang ky tai khoan.ui"), self)
+        uic.loadUi(os.path.join(base_dir, "../ui/dang ky tai khoan.ui"), self)
+        
+        # Tải hình ảnh từ đường dẫn tuyệt đối
+        self.tai_hinh_anh()
 
         self.cua_so_dang_nhap = cua_so_dang_nhap_truoc_do
         self.lineEdit_pass_dk.setEchoMode(QtWidgets.QLineEdit.Password)
@@ -21,6 +24,22 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
         self.pushButton_3.clicked.connect(self.xu_ly_dang_ky)  
         self.btn_quay_lai_2.clicked.connect(self.quay_ve_trang_tuoi)
         self.label_2.linkActivated.connect(self.mo_file_dieu_khoan)
+
+    def tai_hinh_anh(self):
+        """Tải hình ảnh từ đường dẫn tuyệt đối"""
+        try:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            image_path = os.path.join(base_dir, "../assets/picture/concu.jpg")
+            if os.path.exists(image_path):
+                pixmap = QPixmap(image_path)
+                # Tìm tất cả widget QLabel và load hình ảnh nếu cần
+                for widget in self.findChildren(QtWidgets.QLabel):
+                    if widget.pixmap() and not widget.pixmap().isNull():
+                        if pixmap and not pixmap.isNull():
+                            widget.setPixmap(pixmap)
+                            widget.setScaledContents(True)
+        except Exception as e:
+            print(f"Lỗi tải hình ảnh: {e}")
 
     def kiem_tra_tuoi_va_chuyen(self):
         tuoi = self.lineEdit_4.text().strip()
@@ -46,7 +65,7 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
             return
 
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(base_dir, "database.txt")
+        file_path = os.path.join(base_dir, "../data/database.txt")
         if os.path.exists(file_path):
             with open(file_path, 'r', encoding='utf-8') as f:
                 for line in f:
@@ -71,4 +90,4 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
 
     def mo_file_dieu_khoan(self, link_text):
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        QDesktopServices.openUrl(QUrl.fromLocalFile(os.path.join(base_dir, "12.txt")))
+        QDesktopServices.openUrl(QUrl.fromLocalFile(os.path.join(base_dir, "../docs/12.txt")))

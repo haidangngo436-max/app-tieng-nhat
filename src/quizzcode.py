@@ -9,7 +9,7 @@ class QuizApp(QtWidgets.QMainWindow):
         super().__init__()
         self.ten_nguoi_dung = ten_nguoi_dung  # Lưu tên người dùng
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        uic.loadUi(os.path.join(base_dir, "quizzcheckui.ui"), self)
+        uic.loadUi(os.path.join(base_dir, "../ui/quiz/quizzcheckui.ui"), self)
 
         self.quiz_data = quiz_data
         self.current_index = 0
@@ -109,22 +109,38 @@ class QuizApp(QtWidgets.QMainWindow):
             self.load_question()
 
     def mo_khoa_bai_tiep_theo(self):
-        """Ghi bài mới vào tiến độ RIÊNG của từng User"""
+        """Ghi bài mới vào tiến độ RIÊNG của từng User và lưu lịch sử"""
         # SỬA LỖI Ở ĐÂY: Dùng file_path có chứa tên người dùng
-        file_path = f"progress_{self.ten_nguoi_dung}.json"
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(base_dir, f"../data/progress/progress_{self.ten_nguoi_dung}.json")
 
         try:
             if os.path.exists(file_path):
                 with open(file_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
             else:
-                data = {"unlocked_lessons": [1]}
+                data = {"unlocked_lessons": [1], "history": []}
         except:
-            data = {"unlocked_lessons": [1]}
+            data = {"unlocked_lessons": [1], "history": []}
+
+        # Đảm bảo history key luôn tồn tại
+        if "history" not in data:
+            data["history"] = []
 
         next_lesson = self.lesson_index + 1
         if next_lesson not in data["unlocked_lessons"]:
             data["unlocked_lessons"].append(next_lesson)
-            # Ghi vào đúng file_path của user đó
-            with open(file_path, "w", encoding="utf-8") as f:
-                json.dump(data, f)
+        
+        # Lưu lịch sử bài làm
+        history_entry = {
+            "lesson": self.lesson_index,
+            "score": self.score,
+            "total": len(self.quiz_data),
+            "date": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+            "passed": self.score >= 1  # Điều kiện đạt
+        }
+        data["history"].append(history_entry)
+        
+        # Ghi vào đúng file_path của user đó
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)

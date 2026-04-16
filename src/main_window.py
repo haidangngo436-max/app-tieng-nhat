@@ -4,6 +4,7 @@ import random
 from PyQt5 import QtWidgets, uic, sip
 from PyQt5.QtCore import Qt
 from quizzcode import QuizApp
+from history_window import CuaSoLichSu
 
 
 class CuaSoChinh(QtWidgets.QMainWindow):
@@ -14,14 +15,14 @@ class CuaSoChinh(QtWidgets.QMainWindow):
         base_dir = os.path.dirname(os.path.abspath(__file__))
 
         # 2. Load giao diện
-        uic.loadUi(os.path.join(base_dir, "mainchinh.ui"), self)
+        uic.loadUi(os.path.join(base_dir, "../ui/mainchinh.ui"), self)
 
         self.cua_so_quiz = None
         self.setWindowTitle(f"Học Tiếng Nhật - {self.ten_nguoi_dung}")
         self.showMaximized()
 
         # 3. Đọc dữ liệu Quizz từ JSON chung
-        json_path = os.path.join(base_dir, "data_quizz.json")
+        json_path = os.path.join(base_dir, "../data/data_quizz.json")
         try:
             with open(json_path, 'r', encoding='utf-8') as f:
                 self.kho_du_lieu_quizz = json.load(f)
@@ -39,6 +40,10 @@ class CuaSoChinh(QtWidgets.QMainWindow):
         self.btn_tiep.clicked.connect(self.mo_bai_tiep)
         self.btn_dang_xuat.clicked.connect(self.dang_xuat)
 
+        # Kết nối nút lịch sử
+        if hasattr(self, 'btn_history'):
+            self.btn_history.clicked.connect(self.mo_lich_su)
+
         # 5. Kết nối 10 nút bài học bên trái (Lật trang)
         for i in range(1, 11):
             nut_ten = f"btn_bai{i}"
@@ -47,12 +52,16 @@ class CuaSoChinh(QtWidgets.QMainWindow):
                 # Dùng lambda đúng cách để không bị kẹt ở bài cuối cùng
                 nut_bam.clicked.connect(lambda checked, idx=i: self.pages.setCurrentIndex(idx))
 
-        # 6. QUAN TRỌNG: Cập nhật màu sắc và khóa/mở bài ngay khi vào App
+        # 6. Vô hiệu hóa chỉnh sửa trực tiếp trên các bảng (bảng chữ cái, v.v.)
+        self.vo_hieu_hoa_chinh_sua_bang()
+
+        # 7. QUAN TRỌNG: Cập nhật màu sắc và khóa/mở bài ngay khi vào App
         self.cap_nhat_giao_dien_khoa()
 
     def get_progress_file(self):
         """Đường dẫn file tiến độ riêng của từng User"""
-        return f"progress_{self.ten_nguoi_dung}.json"
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        return os.path.join(base_dir, f"../data/progress/progress_{self.ten_nguoi_dung}.json")
 
     def get_unlocked_list(self):
         """Đọc danh sách bài đã mở từ file cá nhân"""
@@ -65,6 +74,15 @@ class CuaSoChinh(QtWidgets.QMainWindow):
             return [1]  # Mặc định chỉ mở bài 1
         except:
             return [1]
+
+    def vo_hieu_hoa_chinh_sua_bang(self):
+        """Vô hiệu hóa chỉnh sửa trực tiếp trên tất cả các bảng"""
+        # Tìm tất cả các QTableWidget trong giao diện
+        for widget in self.findChildren(QtWidgets.QTableWidget):
+            # Vô hiệu hóa các trigger chỉnh sửa
+            widget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+            # Cũng có thể cấm chọn từng cell (nếu muốn)
+            # widget.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
 
     def cap_nhat_giao_dien_khoa(self):
         """Hàm 'phù thủy' đổi màu nút xám -> xanh ngay lập tức"""
@@ -155,3 +173,8 @@ class CuaSoChinh(QtWidgets.QMainWindow):
         except Exception as e:
             print(f"Lỗi đăng xuất: {e}")
             self.close()
+
+    def mo_lich_su(self):
+        """Mở cửa sổ lịch sử làm bài"""
+        self.cua_so_lich_su = CuaSoLichSu(self.ten_nguoi_dung, self)
+        self.cua_so_lich_su.exec_()
