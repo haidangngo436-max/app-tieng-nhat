@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>837</width>
+    <width>1090</width>
     <height>749</height>
    </rect>
   </property>
@@ -133,7 +133,7 @@ QPushButton#btn_tiep:hover {
            </property>
            <property name="font">
             <font>
-             <pointsize>22</pointsize>
+             <pointsize>18</pointsize>
             </font>
            </property>
            <property name="text">
@@ -420,7 +420,7 @@ QPushButton#btn_tiep:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>837</width>
+     <width>1090</width>
      <height>26</height>
     </rect>
    </property>
