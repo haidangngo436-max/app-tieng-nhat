@@ -12,7 +12,7 @@
     {"question": " 私はその映画を見ないつもりです。Câu này nghĩa là gì?", "options": ["A. Tôi đã xem bộ phim đó", "B. Tôi sẽ xem bộ phim đó", "C. Tôi dự định không xem bộ phim đó", "D. Tôi đang xem bộ phim đó"], "correct_idx": 2, "explanation": "💡 Giải thích: 見ない + つもり = dự định không xem."}
   ],
   "bai_2": [
-    {"question": " この辞書（じしょ） là loại từ điển mới, chữ to nên rất（　　）やすいです。", "options": ["A. 読んで", "B. 読む", "C. 読み", "D. 読んだ"], "correct_idx": 2, "explanation": "💡Giải thích: 読み(よみ) + やすい: dễ đọc. \n Dịch: Quyển từ điển này chữ to nên rất dễ đọc. "},
+    {"question": " この辞書（じしょ）は新しくて、字（じ）が大きいので、とても（　　　）やすいです。", "options": ["A. 読んで", "B. 読む", "C. 読み", "D. 読んだ"], "correct_idx": 2, "explanation": "💡Giải thích: 読み(よみ) + やすい: dễ đọc. \n Dịch: Quyển từ điển này chữ to nên rất dễ đọc. "},
     {"question": " この漢字は（　　　）にくいです。", "options": ["A. 覚える", "B. 覚え", "C. 覚えて", "D. 覚えた"], "correct_idx": 1, "explanation": "💡Giải thích : Cấu trúc V-masu (bỏ masu) + にくい dùng để chỉ việc gì đó khó thực hiện, vì vậy 覚え(ます) bỏ ます kết hợp với にくい tạo thành 覚え（おぼえ）にくい (khó nhớ). \n Dịch : Chữ Kanji này khó nhớ."},
     {"question": " このいすは軽くて（　　　）やすいです。", "options": ["A. 運び", "B. 運ぶ", "C. 運んだ", "D. 運んで"], "correct_idx": 0, "explanation": "💡 Cấu trúc V-masu (bỏ masu) + やすい dùng để chỉ việc gì đó dễ thực hiện, nên 運び(ます) bỏ ます thêm やすい thành 運びやすい (dễ vận chuyển/dễ bê đồ). \n Dịch: Cái ghế này nhẹ nên dễ mang đi."},
     {"question": " この肉はかたくて（　　　）にくいです。", "options": ["A. 食べ", "B. 食べる", "C. 食べて", "D. 食べた"], "correct_idx": 0, "explanation": "💡 Giải thích: 食べます → 食べ（たべ）+ にくい. \n Dịch: Thịt này cứng nên khó ăn."},
@@ -119,4 +119,4 @@
     {"question": " 友達が駅まで送って（　　　）、本当に助かりました。", "options": ["A. あげて", "B. くれて", "C. もらって", "D. 送って"], "correct_idx": 1, "explanation": "💡 Giải thích quan trọng: \n Có cảm xúc 助かりました / うれしい \n → gần như luôn dùng くれる. \n Dịch: Bạn đã đưa tôi ra ga, thật sự rất giúp ích. "},
     {"question": " 私は友達にノートを（　　　）、友達も私に本を貸してくれました。", "options": ["A. 貸してあげて", "B. 貸してくれて", "C. 貸してもらって", "D. 貸して"], "correct_idx": 0, "explanation": "💡 Giải thích: \n → Vế 1: tôi → bạn ⇒ あげる \n → Vế 2: bạn → tôi ⇒ くれる. \n Dịch: Tôi cho bạn mượn vở, và bạn cũng cho tôi mượn sách. "}
   ]
-} 
+}
