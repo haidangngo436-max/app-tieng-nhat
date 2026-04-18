@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>810</height>
+    <width>1118</width>
+    <height>834</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -125,6 +125,12 @@ QPushButton:pressed {
      <layout class="QHBoxLayout">
       <item>
        <widget class="QFrame" name="leftPanel">
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <layout class="QVBoxLayout">
          <item>
           <widget class="QLabel" name="label">
@@ -139,7 +145,7 @@ QPushButton:pressed {
            <property name="styleSheet">
             <string notr="true">QLabel {
     font-family: &quot;Segoe UI&quot;;
-    font-size: 16px;
+    font-size: 33px;
 }
 </string>
            </property>
@@ -161,7 +167,7 @@ QPushButton:pressed {
            <property name="styleSheet">
             <string notr="true">QListWidget {
     font-family: &quot;Yu Gothic UI&quot;;
-    font-size: 20px;
+    font-size: 30px;
    font-weight: semibold;
 }</string>
            </property>
@@ -191,22 +197,6 @@ QPushButton:pressed {
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Maximum</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>600</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QFrame" name="rightPanel">
         <property name="minimumSize">
          <size>
@@ -233,7 +223,7 @@ QPushButton:pressed {
 
 QLabel#wordTitle {
     font-family: &quot;Yu Gothic UI&quot;;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 </string>
