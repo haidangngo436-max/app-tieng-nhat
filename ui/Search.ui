@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>810</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dictionary UI</string>
+  </property>
+  <property name="styleSheet">
+   <string>
+QMainWindow {
+    background-color: #f5f7fa;
+}
+
+QLineEdit {
+    border: 2px solid #5aa9e6;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+QPushButton {
+    background-color: #5aa9e6;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color:#3d8ed6;
+}
+
+QFrame#leftPanel {
+    background-color:#ffffff;
+    border-radius: 10px;
+}
+
+QFrame#rightPanel {
+    background-color:#ffffff;
+    border-radius: 10px;
+}
+
+QLabel {
+    font-size: 14px;
+}
+
+QLabel#wordTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+QListWidget {
+    border: none;
+}
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <layout class="QHBoxLayout">
+       <item>
+        <widget class="QLineEdit" name="searchInput">
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 2px solid #A8D8F0;   
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #F8FCFF;      
+}
+
+QLineEdit:focus {
+    border: 2px solid #6EC1E4;    
+}
+
+QPushButton {
+    background-color: #6EC1E4;      
+    color: white;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #5BB3D9;   
+}
+
+QPushButton:pressed {
+    background-color: #4AA3CC;
+}
+</string>
+         </property>
+         <property name="placeholderText">
+          <string>Search for a word...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnSearch">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Search</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout">
+      <item>
+       <widget class="QFrame" name="leftPanel">
+        <layout class="QVBoxLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>-1</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Lịch sử tra cứu</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="recentList">
+           <property name="font">
+            <font>
+             <family>Yu Gothic UI</family>
+             <pointsize>-1</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QListWidget {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 20px;
+   font-weight: semibold;
+}</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>りんご</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>食べ物</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>水</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>火</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Maximum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>600</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QFrame" name="rightPanel">
+        <property name="minimumSize">
+         <size>
+          <width>600</width>
+          <height>0</height>
+         </size>
+        </property>
+        <layout class="QVBoxLayout">
+         <item>
+          <widget class="QLabel" name="wordTitle">
+           <property name="font">
+            <font>
+             <family>Yu Gothic UI</family>
+             <pointsize>-1</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 14px;
+}
+
+QLabel#wordTitle {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 20px;
+    font-weight: bold;
+}
+</string>
+           </property>
+           <property name="text">
+            <string> 日本 ( にほん）
+ Hiragana: にほん
+ Romaji: Nihon / Nippon</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Loại từ : 名詞 (Danh từ )</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+}
+</string>
+           </property>
+           <property name="text">
+            <string> Nghĩa:
+ 1. Nhật Bản
+ 2. Đất nước mặt trời mọc
+</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Yu Gothic UI</family>
+             <pointsize>-1</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 16px;
+   font-weight: semibold;
+}
+
+
+</string>
+           </property>
+           <property name="text">
+            <string> Ví dụ :
+ 私は日本に住んでいます。
+→ Tôi đang sống ở Nhật Bản
+
+ 日本はとてもきれいな国です。
+ → Nhật Bản là một đất nước rất đẹp
+
+ 日本へ行きたいです。
+ → Tôi muốn đi Nhật
+</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Yu Gothic UI</family>
+             <pointsize>-1</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 16px;
+   font-weight: semibold;
+}</string>
+           </property>
+           <property name="text">
+            <string>Các từ liên quan : 
+ 日本人（にほんじん）: người Nhật
+ 日本語（にほんご）: tiếng Nhật</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 16px;
+   font-weight: semibold;
+}</string>
+           </property>
+           <property name="text">
+            <string>Trình độ : N5</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Yu Gothic UI</family>
+             <pointsize>-1</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 16px;
+   font-weight: semibold;
+}</string>
+           </property>
+           <property name="text">
+            <string>Kanji : 
+ 日: 
+ On: ニチ、ジツ  
+Kun: ひ、び、か  
+ : ngày, mặt trời
+  本: 
+ On: ホン  
+ Kun: もと  
+ Nghĩa: gốc, sách, nguồn
+</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
