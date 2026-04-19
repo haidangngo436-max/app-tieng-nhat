@@ -133,6 +133,7 @@ QPushButton#btn_tiep:hover {
            </property>
            <property name="font">
             <font>
+             <family>Yu Gothic UI</family>
              <pointsize>24</pointsize>
              <weight>75</weight>
              <bold>true</bold>
@@ -150,6 +151,14 @@ QPushButton#btn_tiep:hover {
           <layout class="QGridLayout" name="gridLayout">
            <item row="1" column="0">
             <widget class="QPushButton" name="pushButton_4">
+             <property name="font">
+              <font>
+               <family>Yu Gothic UI</family>
+               <pointsize>-1</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>C. いただきません</string>
              </property>
@@ -165,6 +174,7 @@ QPushButton#btn_tiep:hover {
             <widget class="QPushButton" name="pushButton">
              <property name="font">
               <font>
+               <family>Yu Gothic UI</family>
                <pointsize>-1</pointsize>
                <weight>75</weight>
                <bold>true</bold>
@@ -183,6 +193,14 @@ QPushButton#btn_tiep:hover {
            </item>
            <item row="1" column="1">
             <widget class="QPushButton" name="pushButton_3">
+             <property name="font">
+              <font>
+               <family>Yu Gothic UI</family>
+               <pointsize>-1</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>D. いただけませんか</string>
              </property>
@@ -196,6 +214,14 @@ QPushButton#btn_tiep:hover {
            </item>
            <item row="0" column="1">
             <widget class="QPushButton" name="pushButton_2">
+             <property name="font">
+              <font>
+               <family>Yu Gothic UI</family>
+               <pointsize>-1</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="text">
               <string>B. いただけません</string>
              </property>
@@ -222,7 +248,10 @@ QPushButton#btn_tiep:hover {
              <widget class="QLabel" name="label_noidung_gt">
               <property name="font">
                <font>
+                <family>Segoe UI</family>
                 <pointsize>-1</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
                </font>
               </property>
               <property name="text">
@@ -430,7 +459,7 @@ QPushButton#btn_tiep:pressed {
      <x>0</x>
      <y>0</y>
      <width>1090</width>
-     <height>30</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
