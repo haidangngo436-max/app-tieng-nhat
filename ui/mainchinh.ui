@@ -4372,17 +4372,25 @@ QPushButton:hover {
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">QQPushButton {
-    font-size: 16px;
-    padding: 10px 18px;
-    border: 1px solid black;
-    border-radius: 8px;
+         <string notr="true">QPushButton {
+    background-color: #1CB0F6;
+    color: white;
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
+    padding: 10px;
+    margin-bottom: 5px;
 }
 
-QPushButton:hover {
-    background-color: #f2f2f2;
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
 }
-
 </string>
         </property>
         <property name="text">

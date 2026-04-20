@@ -173,14 +173,23 @@
          <widget class="QPushButton" name="btn_dang_nhap">
           <property name="styleSheet">
            <string notr="true">QPushButton {
-    background-color: #1cb0f6; /* Màu xanh Duolingo */
+    background-color: #1CB0F6;
     color: white;
-    font-weight: bold;
-    border-radius: 12px; /* Bo góc */
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
+    margin-bottom: 5px;
 }
-QPushButton:hover {
-    background-color: #1899d6; /* Màu khi rê chuột vào */
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
 }</string>
           </property>
           <property name="text">
@@ -192,14 +201,23 @@ QPushButton:hover {
          <widget class="QPushButton" name="btn_chuyen_trang">
           <property name="styleSheet">
            <string notr="true">QPushButton {
-    background-color: #1cb0f6; /* Màu xanh Duolingo */
+    background-color: #1CB0F6;
     color: white;
-    font-weight: bold;
-    border-radius: 12px; /* Bo góc */
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
+    margin-bottom: 5px;
 }
-QPushButton:hover {
-    background-color: #1899d6; /* Màu khi rê chuột vào */
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
 }</string>
           </property>
           <property name="text">
