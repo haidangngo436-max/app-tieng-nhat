@@ -16,6 +16,7 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
         
         # Tải hình ảnh từ đường dẫn tưyệt đối
         self.tai_hinh_anh()
+        self.showMaximized()
         
         self.lineEdit_pass.setEchoMode(QtWidgets.QLineEdit.Password)
         self.btn_chuyen_trang.clicked.connect(self.mo_cua_so_dang_ky)

@@ -10,8 +10,8 @@ class QuizApp(QtWidgets.QMainWindow):
         self.ten_nguoi_dung = ten_nguoi_dung  # Lưu tên người dùng
         base_dir = os.path.dirname(os.path.abspath(__file__))
         uic.loadUi(os.path.join(base_dir, "../ui/quiz/quizzcheckui.ui"), self)
-
         self.quiz_data = quiz_data
+        self.showMaximized()
         self.current_index = 0
         self.lesson_index = lesson_index
         self.score = 0

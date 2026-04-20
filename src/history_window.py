@@ -16,6 +16,7 @@ class CuaSoLichSu(QtWidgets.QMainWindow):
         uic.loadUi(ui_path, self)
 
         self.setWindowTitle(f"Lịch sử học tập - {ten_nguoi_dung}")
+        self.showMaximized()
 
         # 2. Kết nối nút bấm dựa trên Object Name trong ảnh bạn gửi
         # Nút "Quay lại" trong ảnh của bạn tên là 'pushButton'

@@ -16,7 +16,7 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
         # Đảm bảo khi mở lên luôn ở trang nhập tuổi (Index 0)
         if hasattr(self, 'stackedWidget'):
             self.stackedWidget.setCurrentIndex(0)
-
+        self.showMaximized()
         self.tai_hinh_anh()
         self.cua_so_dang_nhap = cua_so_dang_nhap_truoc_do
         self.lineEdit_pass_dk.setEchoMode(QtWidgets.QLineEdit.Password)

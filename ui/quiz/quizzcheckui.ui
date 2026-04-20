@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1090</width>
-    <height>749</height>
+    <height>959</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,6 +117,91 @@ QPushButton#btn_tiep:hover {
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
+          <widget class="QLabel" name="label">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font-size:20px;font-weight:bold;background:#2c3e50;color:white;</string>
+           </property>
+           <property name="text">
+            <string>📘 HỌC NGỮ PHÁP TIẾNG NHẬT</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame">
+           <property name="styleSheet">
+            <string notr="true">QFrame {
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QPushButton" name="pushButton_5">
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>99</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #1CB0F6;
+    color: white;
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 12pt;
+	text-align: center;
+}
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
+}</string>
+              </property>
+              <property name="text">
+               <string>Quay lại</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
           <widget class="QProgressBar" name="progressBar">
            <property name="value">
             <number>24</number>
@@ -124,17 +209,30 @@ QPushButton#btn_tiep:hover {
           </widget>
          </item>
          <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
           <widget class="QLineEdit" name="label_cauhoi">
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>100</height>
+             <height>200</height>
             </size>
            </property>
            <property name="font">
             <font>
              <family>Yu Gothic UI</family>
-             <pointsize>24</pointsize>
+             <pointsize>25</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -154,7 +252,7 @@ QPushButton#btn_tiep:hover {
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>100</height>
+               <height>150</height>
               </size>
              </property>
              <property name="font">
@@ -164,6 +262,14 @@ QPushButton#btn_tiep:hover {
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 25px;
+   font-weight: semibold;
+	border: none;
+}</string>
              </property>
              <property name="text">
               <string>C. いただきません</string>
@@ -181,7 +287,7 @@ QPushButton#btn_tiep:hover {
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>100</height>
+               <height>150</height>
               </size>
              </property>
              <property name="font">
@@ -191,6 +297,14 @@ QPushButton#btn_tiep:hover {
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 25px;
+   font-weight: semibold;
+	border: none;
+}</string>
              </property>
              <property name="text">
               <string>A. いただけるか</string>
@@ -208,7 +322,7 @@ QPushButton#btn_tiep:hover {
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>100</height>
+               <height>150</height>
               </size>
              </property>
              <property name="font">
@@ -218,6 +332,14 @@ QPushButton#btn_tiep:hover {
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 25px;
+   font-weight: semibold;
+	border: none;
+}</string>
              </property>
              <property name="text">
               <string>D. いただけませんか</string>
@@ -235,7 +357,7 @@ QPushButton#btn_tiep:hover {
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>100</height>
+               <height>150</height>
               </size>
              </property>
              <property name="font">
@@ -245,6 +367,14 @@ QPushButton#btn_tiep:hover {
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    font-family: &quot;Yu Gothic UI&quot;;
+    font-size: 25px;
+   font-weight: semibold;
+	border: none;
+}</string>
              </property>
              <property name="text">
               <string>B. いただけません</string>
@@ -278,6 +408,14 @@ QPushButton#btn_tiep:hover {
                 <bold>true</bold>
                </font>
               </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 25px;
+   font-weight: semibold;
+	border: none;
+}</string>
+              </property>
               <property name="text">
                <string>Giải thích: Vて + いただけませんか - Mẫu lịch sự trong giao tiếp.</string>
               </property>
@@ -285,6 +423,22 @@ QPushButton#btn_tiep:hover {
             </item>
            </layout>
           </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>45</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -483,7 +637,7 @@ QPushButton#btn_tiep:pressed {
      <x>0</x>
      <y>0</y>
      <width>1090</width>
-     <height>30</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
