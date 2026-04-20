@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1440</width>
-    <height>764</height>
+    <height>840</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,10 +65,13 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
       <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
-        <height>40</height>
+        <height>50</height>
        </size>
       </property>
      </spacer>
@@ -76,7 +79,7 @@
     <item row="1" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -152,14 +155,23 @@
            <widget class="QPushButton" name="pushButton_2">
             <property name="styleSheet">
              <string notr="true">QPushButton {
-    background-color: #1cb0f6; /* Màu xanh Duolingo */
+    background-color: #1CB0F6;
     color: white;
-    font-weight: bold;
-    border-radius: 12px; /* Bo góc */
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
+    margin-bottom: 5px;
 }
-QPushButton:hover {
-    background-color: #1899d6; /* Màu khi rê chuột vào */
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
 }</string>
             </property>
             <property name="text">
@@ -171,16 +183,24 @@ QPushButton:hover {
            <widget class="QPushButton" name="pushButton">
             <property name="styleSheet">
              <string notr="true">QPushButton {
-    background-color: #1cb0f6; /* Màu xanh Duolingo */
+    background-color: #1CB0F6;
     color: white;
-    font-weight: bold;
-    border-radius: 12px; /* Bo góc */
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
+    margin-bottom: 5px;
 }
-QPushButton:hover {
-    background-color: #1899d6; /* Màu khi rê chuột vào */
-}
-</string>
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
+}</string>
             </property>
             <property name="text">
              <string>Quay lại</string>
@@ -350,14 +370,23 @@ QPushButton:hover {
            <widget class="QPushButton" name="pushButton_3">
             <property name="styleSheet">
              <string notr="true">QPushButton {
-    background-color: #1cb0f6; /* Màu xanh Duolingo */
+    background-color: #1CB0F6;
     color: white;
-    font-weight: bold;
-    border-radius: 12px; /* Bo góc */
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
+    margin-bottom: 5px;
 }
-QPushButton:hover {
-    background-color: #1899d6; /* Màu khi rê chuột vào */
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
 }</string>
             </property>
             <property name="text">
@@ -369,14 +398,23 @@ QPushButton:hover {
            <widget class="QPushButton" name="btn_quay_lai_2">
             <property name="styleSheet">
              <string notr="true">QPushButton {
-    background-color: #1cb0f6; /* Màu xanh Duolingo */
+    background-color: #1CB0F6;
     color: white;
-    font-weight: bold;
-    border-radius: 12px; /* Bo góc */
+    font-weight: 900;
+    font-size: 15px;
+    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
+    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border-radius: 18px;
     padding: 10px;
+    margin-bottom: 5px;
 }
-QPushButton:hover {
-    background-color: #1899d6; /* Màu khi rê chuột vào */
+
+/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+QPushButton:hover, QPushButton:pressed {
+    background-color: #58CC02;
+    border: 1px solid #58CC02;
+    border-bottom: 5px solid #58A700;
+    color: white;
 }</string>
             </property>
             <property name="text">

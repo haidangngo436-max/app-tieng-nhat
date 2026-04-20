@@ -23,19 +23,6 @@ QPushButton:hover, QPushButton:pressed {
     color: white;
 }
 
-/* Ngoại lệ: Nút Bài Trước (Trắng viền Xanh) */
-#btn_truoc {
-    background-color: #FFFFFF;
-    color: #1CB0F6;
-    border: 2px solid #E5E7EB;
-    border-bottom: 5px solid #E5E7EB;
-}
-#btn_truoc:hover {
-    background-color: #F7F9FA;
-    border-color: #1CB0F6;
-    border-bottom: 5px solid #1899D6;
-}
-
 /* Ngoại lệ: Nút Đăng Xuất (Trắng viền Vàng/Đỏ) */
 #btn_dang_xuat {
     background-color: #FFFFFF;
