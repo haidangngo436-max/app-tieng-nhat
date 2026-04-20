@@ -77,9 +77,25 @@ class QuizApp(QtWidgets.QMainWindow):
 
         for i, btn in enumerate(self.buttons):
             if i == correct_idx:
-                btn.setStyleSheet("background-color: #58cc02; color: white; border-radius: 10px; font-weight: bold;")
+                # Màu Xanh mới (Giống ảnh Bài 3) - Có đổ bóng đậm
+                btn.setStyleSheet("""
+                    background-color: #58CC02; 
+                    color: white; 
+                    border-radius: 15px; 
+                    font-weight: bold; 
+                    border-bottom: 4px solid #58CC02;
+                """)
             elif i == idx:
-                btn.setStyleSheet("background-color: #ff4b4b; color: white; border-radius: 10px; font-weight: bold;")
+                # Màu Đỏ đậm thêm 1 chút (Red-Ruby) - Có đổ bóng đậm
+                btn.setStyleSheet("""
+                    background-color: #FF4B4B; 
+                    color: white; 
+                    border-radius: 15px; 
+                    font-weight: bold; 
+                    border-bottom: 4px solid #BB1932;
+                """)
+
+            btn.setEnabled(False)
             btn.setEnabled(False)
 
     def next_question(self):

@@ -1,122 +1,111 @@
 import os
 import json
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, uic
 from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QTableWidgetItem
 
 
-class CuaSoLichSu(QtWidgets.QDialog):
-    """Cửa sổ hiển thị lịch sử làm bài của người dùng"""
-    
+class CuaSoLichSu(QtWidgets.QMainWindow):
     def __init__(self, ten_nguoi_dung, parent=None):
         super().__init__(parent)
         self.ten_nguoi_dung = ten_nguoi_dung
-        self.setWindowTitle(f"Lịch sử làm bài - {ten_nguoi_dung}")
-        self.setGeometry(100, 100, 700, 500)
-        
-        # Tạo layout chính
-        layout = QtWidgets.QVBoxLayout()
-        
-        # Tiêu đề
-        title = QtWidgets.QLabel(f"Lịch sử làm bài của {ten_nguoi_dung}")
-        font = title.font()
-        font.setPointSize(12)
-        font.setBold(True)
-        title.setFont(font)
-        layout.addWidget(title)
-        
-        # Tạo bảng hiển thị lịch sử
-        self.table = QtWidgets.QTableWidget()
-        self.table.setColumnCount(5)
-        self.table.setHorizontalHeaderLabels(["Bài học", "Điểm", "Ngày làm", "Trạng thái", "Chi tiết"])
-        self.table.horizontalHeader().setStretchLastSection(False)
-        self.table.setColumnWidth(0, 80)
-        self.table.setColumnWidth(1, 80)
-        self.table.setColumnWidth(2, 180)
-        self.table.setColumnWidth(3, 100)
-        self.table.setColumnWidth(4, 150)
-        
-        layout.addWidget(self.table)
-        
-        # Nút đóng
-        btn_dong = QtWidgets.QPushButton("Đóng")
-        btn_dong.clicked.connect(self.close)
-        layout.addWidget(btn_dong)
-        
-        self.setLayout(layout)
-        
-        # Tải dữ liệu lịch sử
-        self.tai_lich_su()
-    
+
+        # 1. Load giao diện từ file .ui mới
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        ui_path = os.path.join(base_dir, "../ui/History.ui")
+        uic.loadUi(ui_path, self)
+
+        self.setWindowTitle(f"Lịch sử học tập - {ten_nguoi_dung}")
+
+        # 2. Kết nối nút bấm dựa trên Object Name trong ảnh bạn gửi
+        # Nút "Quay lại" trong ảnh của bạn tên là 'pushButton'
+        if hasattr(self, 'pushButton'):
+            self.pushButton.clicked.connect(self.close)
+
+        # Nút "Đăng xuất" tên là 'Logout_Button'
+        if hasattr(self, 'Logout_Button'):
+            self.Logout_Button.clicked.connect(self.close)  # Hoặc xử lý đăng xuất riêng
+
+        # 3. Ánh xạ bảng từ UI
+        # Trong ảnh của bạn, QTableWidget có tên là 'tbl_LichSuNopBai'
+        self.table = self.findChild(QtWidgets.QTableWidget, "tbl_LichSuNopBai")
+
+        if self.table:
+            self.setup_table_style()
+            self.tai_lich_su()
+        else:
+            print("Lỗi: Không tìm thấy bảng 'tbl_LichSuNopBai' trong file UI!")
+
+    def setup_table_style(self):
+        """Định dạng bảng để khớp với các cột: Bài tập, Thời gian, Kết quả, Đánh giá"""
+        self.table.setColumnCount(4)
+        self.table.setHorizontalHeaderLabels(["Bài tập", "Thời gian", "Kết quả", "Đánh giá"])
+
+        # Giãn đều các cột
+        header = self.table.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+
+        # Ẩn cột số thứ tự bên trái
+        self.table.verticalHeader().setVisible(False)
+
+        # Style cho bảng (giữ màu sắc Cyan nhẹ nhàng)
+        self.table.setStyleSheet("""
+            QTableWidget { gridline-color: #e0f7fa; font-size: 13px; }
+            QHeaderView::section {
+                background-color: #00bcd4;
+                color: white;
+                padding: 5px;
+                font-weight: bold;
+                border: 1px solid #00acc1;
+            }
+        """)
+
     def tai_lich_su(self):
-        """Tải lịch sử từ file progress"""
+        """Đọc dữ liệu từ file progress_{user}.json"""
         base_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(base_dir, f"../data/progress/progress_{self.ten_nguoi_dung}.json")
-        
-        try:
-            if os.path.exists(file_path):
-                with open(file_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-            else:
-                self.table.setRowCount(1)
-                item = QtWidgets.QTableWidgetItem("Chưa có lịch sử làm bài")
-                self.table.setItem(0, 0, item)
-                return
-            
-            history = data.get("history", [])
-            
-            if not history:
-                self.table.setRowCount(1)
-                item = QtWidgets.QTableWidgetItem("Chưa có lịch sử làm bài")
-                self.table.setItem(0, 0, item)
-                return
-            
-            # Sắp xếp lịch sử theo ngày mới nhất trước
-            history_sorted = sorted(history, key=lambda x: x.get("date", ""), reverse=True)
-            
-            self.table.setRowCount(len(history_sorted))
-            
-            for row, entry in enumerate(history_sorted):
-                lesson = entry.get("lesson", "?")
-                score = entry.get("score", 0)
-                total = entry.get("total", 0)
-                date = entry.get("date", "?")
-                passed = entry.get("passed", False)
-                status = "✓ Đạt" if passed else "✗ Chưa đạt"
-                
-                # Bài học
-                item_lesson = QtWidgets.QTableWidgetItem(f"Bài {lesson}")
-                item_lesson.setTextAlignment(Qt.AlignCenter)
-                self.table.setItem(row, 0, item_lesson)
-                
-                # Điểm
-                item_score = QtWidgets.QTableWidgetItem(f"{score}/{total}")
-                item_score.setTextAlignment(Qt.AlignCenter)
-                self.table.setItem(row, 1, item_score)
-                
-                # Ngày
-                item_date = QtWidgets.QTableWidgetItem(date)
-                item_date.setTextAlignment(Qt.AlignCenter)
-                self.table.setItem(row, 2, item_date)
-                
-                # Trạng thái
-                item_status = QtWidgets.QTableWidgetItem(status)
-                item_status.setTextAlignment(Qt.AlignCenter)
-                if passed:
-                    item_status.setBackground(QtCore.Qt.green)
-                    item_status.setForeground(QtCore.Qt.white)
-                else:
-                    item_status.setBackground(QtCore.Qt.red)
-                    item_status.setForeground(QtCore.Qt.white)
-                self.table.setItem(row, 3, item_status)
-                
-                # Chi tiết
-                percentage = int((score / total * 100)) if total > 0 else 0
-                item_detail = QtWidgets.QTableWidgetItem(f"{percentage}%")
-                item_detail.setTextAlignment(Qt.AlignCenter)
-                self.table.setItem(row, 4, item_detail)
-        
-        except Exception as e:
-            print(f"Lỗi tải lịch sử: {e}")
+
+        if not os.path.exists(file_path):
             self.table.setRowCount(1)
-            item = QtWidgets.QTableWidgetItem(f"Lỗi: {str(e)}")
-            self.table.setItem(0, 0, item)
+            self.table.setColumnCount(1)
+            self.table.setItem(0, 0, QTableWidgetItem("Chưa có lịch sử làm bài."))
+            return
+
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                history = data.get("history", [])
+
+            # Sắp xếp lịch sử: mới nhất lên đầu
+            history.sort(key=lambda x: x.get("date", ""), reverse=True)
+
+            self.table.setRowCount(len(history))
+            for row, entry in enumerate(history):
+                # Tạo các ô dữ liệu
+                item_lesson = QTableWidgetItem(f"Bài {entry.get('lesson', '?')}")
+                item_time = QTableWidgetItem(entry.get('date', ''))
+
+                score = entry.get('score', 0)
+                total = entry.get('total', 0)
+                item_result = QTableWidgetItem(f"{score}/{total}")
+
+                passed = entry.get('passed', False)
+                status_text = "Đạt ✓" if passed else "Chưa đạt ✗"
+                item_status = QTableWidgetItem(status_text)
+
+                # Căn giữa và tô màu
+                for item in [item_lesson, item_time, item_result, item_status]:
+                    item.setTextAlignment(Qt.AlignCenter)
+
+                if passed:
+                    item_status.setForeground(QtCore.Qt.darkGreen)
+                else:
+                    item_status.setForeground(QtCore.Qt.red)
+
+                self.table.setItem(row, 0, item_lesson)
+                self.table.setItem(row, 1, item_time)
+                self.table.setItem(row, 2, item_result)
+                self.table.setItem(row, 3, item_status)
+
+        except Exception as e:
+            print(f"Lỗi load dữ liệu: {e}")

@@ -177,4 +177,4 @@ class CuaSoChinh(QtWidgets.QMainWindow):
     def mo_lich_su(self):
         """Mở cửa sổ lịch sử làm bài"""
         self.cua_so_lich_su = CuaSoLichSu(self.ten_nguoi_dung, self)
-        self.cua_so_lich_su.exec_()
+        self.cua_so_lich_su.show()
