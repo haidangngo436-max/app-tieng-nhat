@@ -10,8 +10,8 @@ class QuizApp(QtWidgets.QMainWindow):
         self.ten_nguoi_dung = ten_nguoi_dung  # Lưu tên người dùng
         base_dir = os.path.dirname(os.path.abspath(__file__))
         uic.loadUi(os.path.join(base_dir, "../ui/quiz/quizzcheckui.ui"), self)
+
         self.quiz_data = quiz_data
-        self.showMaximized()
         self.current_index = 0
         self.lesson_index = lesson_index
         self.score = 0
@@ -33,7 +33,8 @@ class QuizApp(QtWidgets.QMainWindow):
 
         if hasattr(self, 'btn_truoc'):
             self.btn_truoc.clicked.connect(self.prev_question)
-
+        if hasattr(self, 'btn_quay_lai'):
+            self.btn_quay_lai.clicked.connect(self.quay_lai_main)
         # 3. Kết nối chọn đáp án
         for i, btn in enumerate(self.buttons):
             btn.clicked.connect(lambda checked, idx=i: self.check_answer(idx))
@@ -83,7 +84,7 @@ class QuizApp(QtWidgets.QMainWindow):
                     color: white; 
                     border-radius: 15px; 
                     font-weight: bold; 
-                    border-bottom: 4px solid #58CC02;
+                    border-bottom: 4px solid #58A386;
                 """)
             elif i == idx:
                 # Màu Đỏ đậm thêm 1 chút (Red-Ruby) - Có đổ bóng đậm
@@ -124,6 +125,10 @@ class QuizApp(QtWidgets.QMainWindow):
             self.current_index -= 1
             self.load_question()
 
+    def quay_lai_main(self):
+        """Đóng cửa sổ Quiz hiện tại và quay về Main chính"""
+        print("Đang quay lại màn hình chính...") # Để debug kiểm tra nút có ăn hay không
+        self.close()
     def mo_khoa_bai_tiep_theo(self):
         """Ghi bài mới vào tiến độ RIÊNG của từng User và lưu lịch sử"""
         # SỬA LỖI Ở ĐÂY: Dùng file_path có chứa tên người dùng

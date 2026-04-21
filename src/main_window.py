@@ -30,6 +30,7 @@ class CuaSoChinh(QtWidgets.QMainWindow):
             self.kho_du_lieu_quizz = {}
 
         # 4. Kết nối các nút chức năng cố định
+
         if hasattr(self, 'btn_hira'):
             self.btn_hira.clicked.connect(lambda: self.pages.setCurrentIndex(0))
 
