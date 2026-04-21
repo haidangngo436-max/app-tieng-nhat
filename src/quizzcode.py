@@ -109,19 +109,27 @@ class QuizApp(QtWidgets.QMainWindow):
             self.current_index += 1
             self.load_question()
         else:
-            # Điều kiện mở khóa (Ví dụ: đúng từ 1 câu trở lên - ông có thể sửa số 1 này)
-            diem_can_thiet = 1
+            diem_can_thiet = 5
+            passed = self.score >= diem_can_thiet
 
-            if self.score >= diem_can_thiet:
+            # LUÔN lưu lịch sử dù đạt hay không
+            self.luu_lich_su(passed)
+
+            if passed:
                 self.mo_khoa_bai_tiep_theo()
-                QtWidgets.QMessageBox.information(self, "Tuyệt vời!",
-                                                  f"Bạn đạt {self.score}/{tong_so_cau_thuc_te} điểm!\nBài tiếp theo đã được mở khóa.")
-                self.close()
+                QtWidgets.QMessageBox.information(
+                    self, "Tuyệt vời!",
+                    f"Bạn đạt {self.score}/{tong_so_cau_thuc_te} điểm!\nBài tiếp theo đã được mở khóa."
+                )
             else:
-                QtWidgets.QMessageBox.warning(self, "Chưa đủ điểm",
-                                              f"Bạn đạt {self.score}/{tong_so_cau_thuc_te}.\nHãy cố gắng đạt ít nhất {diem_can_thiet} câu để mở bài tiếp theo!")
-                self.close()
+                QtWidgets.QMessageBox.warning(
+                    self, "Chưa đủ điểm",
+                    f"Bạn đạt {self.score}/{tong_so_cau_thuc_te}.\nHãy cố gắng đạt ít nhất {diem_can_thiet} câu để mở bài tiếp theo!"
+                )
 
+            if self.main_window:
+                self.main_window.show()
+            self.close()
     def prev_question(self):
         if self.current_index > 0:
             self.current_index -= 1
@@ -153,17 +161,35 @@ class QuizApp(QtWidgets.QMainWindow):
         next_lesson = self.lesson_index + 1
         if next_lesson not in data["unlocked_lessons"]:
             data["unlocked_lessons"].append(next_lesson)
-        
-        # Lưu lịch sử bài làm
+        # Ghi vào đúng file_path của user đó
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def luu_lich_su(self, passed):
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(base_dir, f"../data/progress/progress_{self.ten_nguoi_dung}.json")
+
+        try:
+            if os.path.exists(file_path):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            else:
+                data = {"unlocked_lessons": [1], "history": []}
+        except:
+            data = {"unlocked_lessons": [1], "history": []}
+
+        if "history" not in data:
+            data["history"] = []
+
         history_entry = {
             "lesson": self.lesson_index,
             "score": self.score,
             "total": len(self.quiz_data),
             "date": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-            "passed": self.score >= 1  # Điều kiện đạt
+            "passed": passed
         }
+
         data["history"].append(history_entry)
-        
-        # Ghi vào đúng file_path của user đó
+
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
