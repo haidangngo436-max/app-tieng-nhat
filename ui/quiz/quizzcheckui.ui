@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1090</width>
-    <height>959</height>
+    <width>1274</width>
+    <height>1010</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -153,7 +153,7 @@ QPushButton#btn_tiep:hover {
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="Quay_lai">
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -636,7 +636,7 @@ QPushButton#btn_tiep:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1090</width>
+     <width>1274</width>
      <height>26</height>
     </rect>
    </property>

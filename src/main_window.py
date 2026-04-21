@@ -131,7 +131,7 @@ class CuaSoChinh(QtWidgets.QMainWindow):
             random.shuffle(du_lieu_tron)
 
             # Khởi tạo QuizApp
-            self.cua_so_quiz = QuizApp(du_lieu_tron, index_hien_tai, self.ten_nguoi_dung)
+            self.cua_so_quiz = QuizApp(du_lieu_tron, index_hien_tai, self.ten_nguoi_dung, main_window=self)
 
             # --- LOGIC THẦN THÁNH CHỮA BỆNH 'PHẢI ĐĂNG XUẤT MỚI XANH' ---
             # 1. Ép cửa sổ Quiz tự hủy khi đóng để phát tín hiệu destroyed
@@ -140,6 +140,7 @@ class CuaSoChinh(QtWidgets.QMainWindow):
             self.cua_so_quiz.destroyed.connect(self.cap_nhat_giao_dien_khoa)
 
             self.cua_so_quiz.show()
+            self.hide()
         else:
             QtWidgets.QMessageBox.information(self, "Thông báo", f"Chưa có bài tập cho '{ten_key}'")
 

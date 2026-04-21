@@ -5,8 +5,9 @@ from PyQt5.QtCore import Qt
 import datetime
 
 class QuizApp(QtWidgets.QMainWindow):
-    def __init__(self, quiz_data, lesson_index, ten_nguoi_dung):
+    def __init__(self, quiz_data, lesson_index, ten_nguoi_dung, main_window=None):
         super().__init__()
+        self.main_window = main_window
         self.ten_nguoi_dung = ten_nguoi_dung  # Lưu tên người dùng
         base_dir = os.path.dirname(os.path.abspath(__file__))
         uic.loadUi(os.path.join(base_dir, "../ui/quiz/quizzcheckui.ui"), self)
@@ -37,6 +38,8 @@ class QuizApp(QtWidgets.QMainWindow):
         # 3. Kết nối chọn đáp án
         for i, btn in enumerate(self.buttons):
             btn.clicked.connect(lambda checked, idx=i: self.check_answer(idx))
+        if hasattr(self, "Quay_lai"):
+            self.Quay_lai.clicked.connect(self.quay_lai)
 
         self.load_question()
 
@@ -123,6 +126,10 @@ class QuizApp(QtWidgets.QMainWindow):
         if self.current_index > 0:
             self.current_index -= 1
             self.load_question()
+    def quay_lai(self):
+        if self.main_window:
+            self.main_window.show()
+        self.close()
 
     def mo_khoa_bai_tiep_theo(self):
         """Ghi bài mới vào tiến độ RIÊNG của từng User và lưu lịch sử"""
