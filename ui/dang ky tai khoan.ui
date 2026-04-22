@@ -159,14 +159,13 @@
     color: white;
     font-weight: 900;
     font-size: 15px;
-    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
-    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border: 1px solid #1CB0F6; 
+    border-bottom: 5px solid #1899D6; 
     border-radius: 18px;
     padding: 10px;
     margin-bottom: 5px;
 }
 
-/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
 QPushButton:hover, QPushButton:pressed {
     background-color: #58CC02;
     border: 1px solid #58CC02;
@@ -187,14 +186,13 @@ QPushButton:hover, QPushButton:pressed {
     color: white;
     font-weight: 900;
     font-size: 15px;
-    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
-    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border: 1px solid #1CB0F6; 
+    border-bottom: 5px solid #1899D6; 
     border-radius: 18px;
     padding: 10px;
     margin-bottom: 5px;
 }
 
-/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
 QPushButton:hover, QPushButton:pressed {
     background-color: #58CC02;
     border: 1px solid #58CC02;
@@ -374,14 +372,13 @@ QPushButton:hover, QPushButton:pressed {
     color: white;
     font-weight: 900;
     font-size: 15px;
-    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
-    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border: 1px solid #1CB0F6;
+    border-bottom: 5px solid #1899D6;
     border-radius: 18px;
     padding: 10px;
     margin-bottom: 5px;
 }
 
-/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
 QPushButton:hover, QPushButton:pressed {
     background-color: #58CC02;
     border: 1px solid #58CC02;
@@ -402,14 +399,13 @@ QPushButton:hover, QPushButton:pressed {
     color: white;
     font-weight: 900;
     font-size: 15px;
-    border: 1px solid #1CB0F6; /* Trị lỗi tàng hình trên Mac */
-    border-bottom: 5px solid #1899D6; /* Đế 3D */
+    border: 1px solid #1CB0F6;
+    border-bottom: 5px solid #1899D6; 
     border-radius: 18px;
     padding: 10px;
     margin-bottom: 5px;
 }
 
-/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
 QPushButton:hover, QPushButton:pressed {
     background-color: #58CC02;
     border: 1px solid #58CC02;

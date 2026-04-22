@@ -1,2 +1,32 @@
-123|123|123
-1234|1234|1234
+ĐIỀU KHOẢN SỬ DỤNG ỨNG DỤNG - Học Tiếng Nhật cùng Đăng béo
+1. Chấp nhận điều khoản
+Bằng việc đăng ký tài khoản và sử dụng ứng dụng, bạn đồng ý tuân thủ các quy định dưới đây. Nếu bạn không đồng ý với bất kỳ điều khoản nào, vui lòng ngừng sử dụng ứng dụng ngay lập tức.
+
+2. Quản lý tài khoản
+Tính chính xác: Người dùng có trách nhiệm cung cấp thông tin chính xác khi đăng ký (Tên đăng nhập, Email).
+
+Bảo mật: Bạn có trách nhiệm tự bảo mật mật khẩu của mình. Chúng tôi không chịu trách nhiệm cho bất kỳ tổn thất nào do việc bạn để lộ thông tin tài khoản cho bên thứ ba hoặc là bị bán
+
+Chuẩn hóa dữ liệu: Để đảm bảo hệ thống hoạt động ổn định, mọi tên đăng nhập sẽ được chuẩn hóa về chữ thường hoặc loại chữ nào đó mà giảng viên yêu cầu
+
+3. Quyền sở hữu trí tuệ
+Toàn bộ nội dung, mã nguồn (Python/PyQt5), giao diện và dữ liệu (bao gồm cả file data_quizz.json) thuộc quyền sở hữu của Ngô Hải Đăng và đồng nghiệp của anh ấy
+
+Nghiêm cấm mọi hành vi sao chép, chỉnh sửa hoặc can thiệp trái phép vào hệ thống dữ liệu của ứng dụng.
+
+4. Quy tắc ứng xử
+Người dùng cam kết không:
+
+Sử dụng ứng dụng vào các mục đích vi phạm pháp luật như cá độ hợp pháp hay cờ bạc
+
+Cố tình thực hiện các hành vi tấn công mạng, phá hoại cơ sở dữ liệu của ứng dụng.
+
+Đăng tải các nội dung không phù hợp hoặc vi phạm thuần phong mỹ tục (nếu ứng dụng có chức năng chia sẻ nội dung).
+
+5. Giới hạn trách nhiệm
+Chúng tôi nỗ lực để ứng dụng hoạt động mượt mà nhất, tuy nhiên không đảm bảo rằng ứng dụng sẽ hoàn toàn không có lỗi kỹ thuật hoặc là bị hack.
+
+Chúng tôi không chịu trách nhiệm về các rủi ro mất mát dữ liệu do lỗi phần cứng hoặc các nguyên nhân bất khả kháng từ phía người dùng.
+
+6. Thay đổi điều khoản
+Chúng tôi có quyền cập nhật các điều khoản này bất cứ lúc nào. Những thay đổi sẽ có hiệu lực ngay khi được cập nhật trên ứng dụng.

@@ -37,14 +37,11 @@ QPushButton:hover {
     background-color: #00796B;
 }
 
-/* TITLE */
 QLabel#mainTitle {
     font-size: 28px;
     color: #009688;
     font-weight: bold;
 }
-
-/* TABLE */
 QTableWidget {
     background-color: #ffffff;
     border-radius: 10px;
@@ -52,7 +49,6 @@ QTableWidget {
     font-size: 14px;
 }
 
-/* HEADER TABLE */
 QHeaderView::section {
     background-color: #E0F2F1;
     font-weight: bold;
@@ -61,13 +57,11 @@ QHeaderView::section {
     border-bottom: 2px solid #80CBC4;
 }
 
-/* ROW */
 QTableWidget::item {
     padding: 10px;
     border-bottom: 1px solid #f1f1f1;
 }
 
-/* SELECT */
 QTableWidget::item:selected {
     background-color: #009688;
     color: white;
@@ -308,13 +302,12 @@ QWidget#centralwidget {
     background-color: #F5FAFF;
 }
 
-/* ===== HEADER ===== */
+
 #wgt_Header {
     background-color: #4FC3F7;
     border-bottom: 2px solid #0288D1;
 }
 
-/* Button trên header */
 #wgt_Header QPushButton {
     color: #2C3E50;
     background: transparent;
@@ -327,21 +320,18 @@ QWidget#centralwidget {
     color: white;
 }
 
-/* ===== TITLE ===== */
 #lbl_TieuDe {
     color: #0288D1;
     font-size: 32px;
     font-weight: bold;
 }
 
-/* ===== PANEL (khung trắng giữa) ===== */
 #wgt_LichSuPanel {
     background-color: white;
     border-radius: 12px;
     border: 1px solid #D6EAF8;
 }
 
-/* ===== TABLE ===== */
 QTableWidget {
     background-color: white;
     alternate-background-color: #F0F8FF;
@@ -350,7 +340,7 @@ QTableWidget {
     color: #2C3E50;
 }
 
-/* Header bảng */
+
 QHeaderView::section {
     background-color: #E1F5FE;
     border-bottom: 2px solid #4FC3F7;
@@ -358,13 +348,13 @@ QHeaderView::section {
     padding: 10px;
 }
 
-/* Row */
+
 QTableWidget::item {
     padding: 10px;
     border-bottom: 1px solid #EAF2F8;
 }
 
-/* Select */
+
 QTableWidget::item:selected {
     background-color: #4FC3F7;
     color: white;
@@ -642,7 +632,7 @@ QTableWidget::item:selected {
     font-size: 12pt;
 }
 
-/* Hiệu ứng khi rê chuột hoặc ấn (Đổi sang Xanh Lá) */
+
 QPushButton:hover, QPushButton:pressed {
     background-color: #58CC02;
     border: 1px solid #58CC02;
