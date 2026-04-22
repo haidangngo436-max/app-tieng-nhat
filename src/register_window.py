@@ -35,7 +35,6 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
         self.label_2.linkActivated.connect(self.mo_file_dieu_khoan)
 
     def tai_hinh_anh(self):
-        """Tải hình ảnh từ đường dẫn tuyệt đối"""
         try:
             base_dir = os.path.dirname(os.path.abspath(__file__))
             image_path = os.path.join(base_dir, "../assets/picture/concu.jpg")
@@ -50,7 +49,6 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
             print(f"Lỗi tải hình ảnh: {e}")
 
     def kiem_tra_tuoi_va_chuyen(self):
-        """Logic kiểm tra tuổi để chuyển trang"""
         tuoi_text = self.lineEdit_4.text().strip()
         if tuoi_text.isdigit():
             tuoi = int(tuoi_text)
@@ -62,11 +60,9 @@ class CuaSoDangKy(QtWidgets.QMainWindow):
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập số tuổi hợp lệ!")
 
     def quay_ve_trang_tuoi(self):
-        """Quay lại Index 0"""
         self.stackedWidget.setCurrentIndex(0)
 
     def xu_ly_dang_ky(self):
-        """Logic ghi file database.txt giống bản gốc của bạn"""
         if not self.checkBox.isChecked():
             QMessageBox.warning(self, "Lỗi", "Bạn phải đồng ý với Điều khoản dịch vụ!")
             return

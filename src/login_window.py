@@ -13,8 +13,6 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
         super().__init__()
         base_dir = os.path.dirname(os.path.abspath(__file__))
         uic.loadUi(os.path.join(base_dir, "../ui/manhinhdangnhap.ui"), self)
-        
-        # Tải hình ảnh từ đường dẫn tưyệt đối
         self.tai_hinh_anh()
         self.showMaximized()
         
@@ -23,7 +21,6 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
         self.btn_dang_nhap.clicked.connect(self.xu_ly_dang_nhap)
 
     def tai_hinh_anh(self):
-        """Tại hình ảnh đăng nhập từ đường dẫn tưyệt đố"""
         try:
             base_dir = os.path.dirname(os.path.abspath(__file__))
             image_path = os.path.join(base_dir, "../assets/picture/concu.jpg")
@@ -49,7 +46,7 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
         if not os.path.exists(file_path):
             hop_thoai = QMessageBox.question(self, "Chưa có dữ liệu",
                                              "Chưa có tài khoản nào! Bro có muốn đăng ký ngay không?",
-                                             QMessageBox.Yes | QMessageBox.No)
+                                             QMessageBox.co | QMessageBox.No)
             if hop_thoai == QMessageBox.Yes: self.mo_cua_so_dang_ky()
             return
 
@@ -70,7 +67,7 @@ class CuaSoDangNhap(QtWidgets.QMainWindow):
             self.mo_man_hinh_chinh(ten_that)
         else:
             hop_thoai = QMessageBox.question(self, "Lỗi đăng nhập",
-                                             "Sai tài khoản, email hoặc mật khẩu!\nBro có muốn Đăng ký không?",
+                                             "Không tồn tại tài khoản!\nĐi đăng ký ngay nhé?",
                                              QMessageBox.Yes | QMessageBox.No)
             if hop_thoai == QMessageBox.Yes: self.mo_cua_so_dang_ky()
 

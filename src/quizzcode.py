@@ -78,7 +78,7 @@ class QuizApp(QtWidgets.QMainWindow):
 
         for i, btn in enumerate(self.buttons):
             if i == correct_idx:
-                # Màu Xanh mới (Giống ảnh Bài 3) - Có đổ bóng đậm
+
                 btn.setStyleSheet("""
                     background-color: #58CC02; 
                     color: white; 
@@ -87,7 +87,7 @@ class QuizApp(QtWidgets.QMainWindow):
                     border-bottom: 4px solid #58A386;
                 """)
             elif i == idx:
-                # Màu Đỏ đậm thêm 1 chút (Red-Ruby) - Có đổ bóng đậm
+
                 btn.setStyleSheet("""
                     background-color: #FF4B4B; 
                     color: white; 
@@ -107,8 +107,7 @@ class QuizApp(QtWidgets.QMainWindow):
             self.current_index += 1
             self.load_question()
         else:
-            # Điều kiện mở khóa (Ví dụ: đúng từ 1 câu trở lên - ông có thể sửa số 1 này)
-            diem_can_thiet = 1
+            diem_can_thiet = 4
 
             if self.score >= diem_can_thiet:
                 self.mo_khoa_bai_tiep_theo()

@@ -96,3 +96,37 @@ code {
     border-radius: 5px;
     font-family: 'Courier New', monospace;
 }
+/* Tô điểm cho toàn bộ hộp thoại thông báo */
+QMessageBox {
+    background-color: #f5f5f5;
+    font-family: "Segoe UI", Arial;
+}
+
+QMessageBox QLabel {
+    color: #333333;
+    font-size: 14px;
+}
+
+/* Tô điểm chung cho các nút bấm trong hộp thoại */
+QMessageBox QPushButton {
+    border-radius: 4px;
+    padding: 6px 20px;
+    min-width: 80px;
+    font-weight: bold;
+}
+
+/* Nút xác nhận (thường là Yes hoặc OK) */
+QMessageBox QPushButton:default {
+    background-color: #2ecc71;
+    color: white;
+    border: 1px solid #27ae60;
+}
+
+QMessageBox QPushButton:default:hover {
+    background-color: #27ae60;
+}
+
+/* Nút hủy (thường là No hoặc Cancel) */
+QMessageBox QPushButton:hover {
+    background-color: #dcdcdc;
+}
