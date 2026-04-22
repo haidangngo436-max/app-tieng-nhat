@@ -64,7 +64,8 @@ class CuaSoLichSu(QtWidgets.QMainWindow):
     def tai_lich_su(self):
         """Đọc dữ liệu từ file progress_{user}.json"""
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(base_dir, f"../data/progress/progress_{self.ten_nguoi_dung}.json")
+        file_path = os.path.join(base_dir, "..", "data", "progress", f"progress_{self.ten_nguoi_dung}.json")
+        file_path = os.path.normpath(file_path)
 
         if not os.path.exists(file_path):
             self.table.setRowCount(1)
