@@ -5,14 +5,13 @@ from PyQt5.QtCore import Qt
 import datetime
 
 class QuizApp(QtWidgets.QMainWindow):
-    def __init__(self, quiz_data, lesson_index, ten_nguoi_dung, main_window=None):
+    def __init__(self, quiz_data, lesson_index, ten_nguoi_dung):
         super().__init__()
-        self.main_window = main_window
         self.ten_nguoi_dung = ten_nguoi_dung  # Lưu tên người dùng
         base_dir = os.path.dirname(os.path.abspath(__file__))
         uic.loadUi(os.path.join(base_dir, "../ui/quiz/quizzcheckui.ui"), self)
+
         self.quiz_data = quiz_data
-        self.showMaximized()
         self.current_index = 0
         self.lesson_index = lesson_index
         self.score = 0
@@ -34,12 +33,11 @@ class QuizApp(QtWidgets.QMainWindow):
 
         if hasattr(self, 'btn_truoc'):
             self.btn_truoc.clicked.connect(self.prev_question)
-
+        if hasattr(self, 'btn_quay_lai'):
+            self.btn_quay_lai.clicked.connect(self.quay_lai_main)
         # 3. Kết nối chọn đáp án
         for i, btn in enumerate(self.buttons):
             btn.clicked.connect(lambda checked, idx=i: self.check_answer(idx))
-        if hasattr(self, "Quay_lai"):
-            self.Quay_lai.clicked.connect(self.quay_lai)
 
         self.load_question()
 
@@ -80,16 +78,16 @@ class QuizApp(QtWidgets.QMainWindow):
 
         for i, btn in enumerate(self.buttons):
             if i == correct_idx:
-                # Màu Xanh mới (Giống ảnh Bài 3) - Có đổ bóng đậm
+
                 btn.setStyleSheet("""
                     background-color: #58CC02; 
                     color: white; 
                     border-radius: 15px; 
                     font-weight: bold; 
-                    border-bottom: 4px solid #58CC02;
+                    border-bottom: 4px solid #58A386;
                 """)
             elif i == idx:
-                # Màu Đỏ đậm thêm 1 chút (Red-Ruby) - Có đổ bóng đậm
+
                 btn.setStyleSheet("""
                     background-color: #FF4B4B; 
                     color: white; 
@@ -109,36 +107,27 @@ class QuizApp(QtWidgets.QMainWindow):
             self.current_index += 1
             self.load_question()
         else:
-            diem_can_thiet = 5
-            passed = self.score >= diem_can_thiet
+            diem_can_thiet = 4
 
-            # LUÔN lưu lịch sử dù đạt hay không
-            self.luu_lich_su(passed)
-
-            if passed:
+            if self.score >= diem_can_thiet:
                 self.mo_khoa_bai_tiep_theo()
-                QtWidgets.QMessageBox.information(
-                    self, "Tuyệt vời!",
-                    f"Bạn đạt {self.score}/{tong_so_cau_thuc_te} điểm!\nBài tiếp theo đã được mở khóa."
-                )
+                QtWidgets.QMessageBox.information(self, "Tuyệt vời!",
+                                                  f"Bạn đạt {self.score}/{tong_so_cau_thuc_te} điểm!\nBài tiếp theo đã được mở khóa.")
+                self.close()
             else:
-                QtWidgets.QMessageBox.warning(
-                    self, "Chưa đủ điểm",
-                    f"Bạn đạt {self.score}/{tong_so_cau_thuc_te}.\nHãy cố gắng đạt ít nhất {diem_can_thiet} câu để mở bài tiếp theo!"
-                )
+                QtWidgets.QMessageBox.warning(self, "Chưa đủ điểm",
+                                              f"Bạn đạt {self.score}/{tong_so_cau_thuc_te}.\nHãy cố gắng đạt ít nhất {diem_can_thiet} câu để mở bài tiếp theo!")
+                self.close()
 
-            if self.main_window:
-                self.main_window.show()
-            self.close()
     def prev_question(self):
         if self.current_index > 0:
             self.current_index -= 1
             self.load_question()
-    def quay_lai(self):
-        if self.main_window:
-            self.main_window.show()
-        self.close()
 
+    def quay_lai_main(self):
+        """Đóng cửa sổ Quiz hiện tại và quay về Main chính"""
+        print("Đang quay lại màn hình chính...") # Để debug kiểm tra nút có ăn hay không
+        self.close()
     def mo_khoa_bai_tiep_theo(self):
         """Ghi bài mới vào tiến độ RIÊNG của từng User và lưu lịch sử"""
         # SỬA LỖI Ở ĐÂY: Dùng file_path có chứa tên người dùng
@@ -161,35 +150,17 @@ class QuizApp(QtWidgets.QMainWindow):
         next_lesson = self.lesson_index + 1
         if next_lesson not in data["unlocked_lessons"]:
             data["unlocked_lessons"].append(next_lesson)
-        # Ghi vào đúng file_path của user đó
-        with open(file_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-
-    def luu_lich_su(self, passed):
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(base_dir, f"../data/progress/progress_{self.ten_nguoi_dung}.json")
-
-        try:
-            if os.path.exists(file_path):
-                with open(file_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-            else:
-                data = {"unlocked_lessons": [1], "history": []}
-        except:
-            data = {"unlocked_lessons": [1], "history": []}
-
-        if "history" not in data:
-            data["history"] = []
-
+        
+        # Lưu lịch sử bài làm
         history_entry = {
             "lesson": self.lesson_index,
             "score": self.score,
             "total": len(self.quiz_data),
             "date": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-            "passed": passed
+            "passed": self.score >= 1  # Điều kiện đạt
         }
-
         data["history"].append(history_entry)
-
+        
+        # Ghi vào đúng file_path của user đó
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)

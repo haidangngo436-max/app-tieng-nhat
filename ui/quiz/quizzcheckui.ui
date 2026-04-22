@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1274</width>
-    <height>1010</height>
+    <width>1440</width>
+    <height>764</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">/* 1. Nền tổng thể của ứng dụng */
 QWidget#centralwidget {
-    background-color: #f4f6f8; /* Màu xám nhạt */
+    background-color: #FFFFFF; 
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
@@ -46,7 +46,7 @@ QLabel#label_cauhoi {
 
 /* 4. Thẻ Đáp án (A, B, C, D) - Trạng thái bình thường */
 QPushButton {
-    background-color: #ffffff;
+    background-color: #f4f6f8;
     border: 2px solid #e5e5e5;
     border-radius: 15px;
     padding: 20px;
@@ -153,7 +153,7 @@ QPushButton#btn_tiep:hover {
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QPushButton" name="Quay_lai">
+             <widget class="QPushButton" name="btn_quay_lai">
               <property name="maximumSize">
                <size>
                 <width>150</width>
@@ -636,8 +636,8 @@ QPushButton#btn_tiep:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1274</width>
-     <height>26</height>
+     <width>1440</width>
+     <height>30</height>
     </rect>
    </property>
   </widget>

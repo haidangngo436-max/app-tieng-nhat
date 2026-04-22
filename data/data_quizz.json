@@ -21,7 +21,7 @@
     {"question": " このゲームはルールが簡単(かんたん)だから、子どもでも（　　　）やすいです。", "options": ["A. 遊ぶ", "B. 遊び", "C. 遊んで", "D. 遊んだ"], "correct_idx": 1, "explanation": "💡Giải thích: 遊びます → 遊び(あそび）+ やすい. \n Dịch: Trò chơi này luật đơn giản nên trẻ con cũng dễ chơi."},
     {"question": " この机(つくえ) は高(たか)すぎて（　　　）にくいです。", "options": ["A. 勉強", "B. 勉強する", "D. 勉強した", "C. 勉強し"], "correct_idx": 3, "explanation": "💡Giải thích: 勉強します → bỏ ます → 勉強し(べんきょうし）+ にくい. \n Giải thích: 勉強します → bỏ ます → 勉強し + にくい. \n Dịch : Cái bàn này cao quá nên khó học. "},
     {"question": " このアプリは便利(べんり) で（　　　）やすいです。", "options": ["A. 使う", "B. 使って", "C. 使い", "D. 使った"], "correct_idx": 2, "explanation": "💡Giải thích : 使い (つかい) + やすい: Dễ làm gì đó. \n Dịch: Ứng dụng này tiện lợi và dễ sử dụng. "},
-    {"question": " 白い服（ふく）は汚れ（よごれ）が（　　）やすいので、気(き)をつけてください。", "options": ["A. 突き", "B. 付き", "C. 付く", "D. 付いて"], "correct_idx": 1, "explanation": "💡Giải thích: 付き(ます) + やすい (付く(つき): dính/bám). \n Dịch: Quần áo trắng dễ bị bẩn nên hãy cẩn thận nhé. "}
+    {"question": " 白い服（ふく）は汚れ（よごれ）が（　　）やすいので、気(き)をつけてください。", "options": ["A. 突き", "B. 付き", "C. 付く", "D. 付いて"], "correct_idx": 1, "explanation": "💡Giải thích: 付き(ます) + やすい (付く(つき)): dính/bám). \n Dịch: Quần áo trắng dễ bị bẩn nên hãy cẩn thận nhé. "}
   ],
   "bai_3": [
     {"question": " 申し訳(もうしわけ) ありませんが、もう一度(いちど) ゆっくり（　　　）いただけませんか。日本語がまだ上手(じょうず)じゃないんです。", "options": ["A. 話す", "B. 話して", "C. 話した", "D. 話し"], "correct_idx": 1, "explanation": "💡Giải thích: 話(はな）していただけませんか là cách nhờ cực lịch sự. \n Dịch: Xin lỗi, anh/chị có thể nói chậm lại một lần nữa được không ạ? Vì tiếng Nhật tôi chưa giỏi. "},
